@@ -607,9 +607,35 @@ footer {
     .logo {
         font-size: 32px;
     }
+    
+    .logo-section {
+        padding: 10px 0;
+    }
+    
+    header {
+        position: relative;
+    }
+
+    nav {
+        padding: 0;
+    }
 
     nav ul {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+    }
+    
+    nav li {
+        flex-shrink: 0;
+    }
+    
+    nav a {
+        padding: 10px 15px;
+        font-size: 13px;
+        white-space: nowrap;
     }
 
     .sidebar {
