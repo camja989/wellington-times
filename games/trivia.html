@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellington Trivia Quiz - The Wellington Times</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .quiz-progress {
+            width: 100%;
+            height: 10px;
+            background: var(--bg-light);
+            border-radius: 5px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .quiz-progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .feedback.show {
+            display: block;
+        }
+        
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .results {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .results h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .final-score {
+            font-size: 72px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+        
+        .performance-message {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="date" id="currentDate"></div>
+                <div class="weather">
+                    <span>☁</span>
+                    <span id="weather">Wellington: 16°C, Partly Cloudy</span>
+                </div>
+            </div>
+        </div>
+        <div class="logo-section">
+            <a href="../index.html" class="logo">The Wellington Times</a>
+            <div class="tagline">Truth • Integrity • Community • Since 2025</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/politics.html">Politics</a></li>
+                <li><a href="../pages/business.html">Business</a></li>
+                <li><a href="../pages/technology.html">Technology</a></li>
+                <li><a href="../pages/sports.html">Sports</a></li>
+                <li><a href="../pages/culture.html">Culture</a></li>
+                <li><a href="../pages/opinion.html">Opinion</a></li>
+                <li><a href="../pages/weather.html">Weather</a></li>
+                <li><a href="../pages/games.html">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="main-content" style="grid-template-columns: 1fr;">
+            <div class="game-container">
+                <div class="game-header">
+                    <h1 class="game-title">Wellington Trivia Challenge</h1>
+                    <p class="game-description">Test your knowledge about New Zealand's capital city!</p>
+                </div>
+
+                <div class="score-board">
+                    <div class="score-item">
+                        <div class="score-label">Question</div>
+                        <div class="score-value" id="currentQuestion">1</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Score</div>
+                        <div class="score-value" id="currentScore">0</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Total</div>
+                        <div class="score-value" id="totalQuestions">10</div>
+                    </div>
+                </div>
+
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="progressBar"></div>
+                </div>
+
+                <div id="quizContent">
+                    <div class="question-container">
+                        <h2 class="question" id="questionText"></h2>
+                        <div class="options" id="optionsContainer"></div>
+                        <div class="feedback" id="feedback"></div>
+                    </div>
+                    <button class="btn" id="nextBtn" style="display: none;">Next Question</button>
+                </div>
+
+                <div id="resultsContainer" style="display: none;">
+                    <div class="results">
+                        <h2>Quiz Complete!</h2>
+                        <div class="final-score" id="finalScore"></div>
+                        <div class="performance-message" id="performanceMessage"></div>
+                        <button class="btn" onclick="location.reload()">Play Again</button>
+                        <a href="../pages/games.html" class="btn" style="margin-left: 10px; background: var(--primary-color); text-decoration: none; display: inline-block;">More Games</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Mission & Values</a></li>
+                        <li><a href="#">Editorial Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Sections</h3>
+                    <ul>
+                        <li><a href="../pages/politics.html">Politics</a></li>
+                        <li><a href="../pages/business.html">Business</a></li>
+                        <li><a href="../pages/technology.html">Technology</a></li>
+                        <li><a href="../pages/sports.html">Sports</a></li>
+                        <li><a href="../pages/culture.html">Culture</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Subscribe</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">RSS Feeds</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Send News Tips</a></li>
+                        <li><a href="#">Letters to Editor</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Wellington Times. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const triviaQuestions = [
+            {
+                question: "What is Wellington's nickname due to its windy weather?",
+                options: ["The Breezy City", "Windy Wellington", "The Gale Capital", "Storm City"],
+                correct: 1,
+                explanation: "Wellington is famously known as 'Windy Wellington' due to its strong winds that blow through the Cook Strait."
+            },
+            {
+                question: "Which famous museum is located on Wellington's waterfront?",
+                options: ["Auckland Museum", "Te Papa Tongarewa", "Canterbury Museum", "Otago Museum"],
+                correct: 1,
+                explanation: "Te Papa Tongarewa, the Museum of New Zealand, is located on Wellington's waterfront and is the country's national museum."
+            },
+            {
+                question: "What is the name of Wellington's iconic cable car?",
+                options: ["Sky Tram", "Wellington Cable Car", "Kelburn Funicular", "Hill Climber"],
+                correct: 1,
+                explanation: "The Wellington Cable Car has been running since 1902, connecting Lambton Quay to Kelburn."
+            },
+            {
+                question: "Which wildlife sanctuary is located just outside Wellington?",
+                options: ["Zealandia", "Tiritiri Matangi", "Kapiti Island", "Bushy Park"],
+                correct: 0,
+                explanation: "Zealandia is a unique ecosanctuary where native New Zealand wildlife is protected and bred in a predator-free environment."
+            },
+            {
+                question: "What strait separates Wellington from the South Island?",
+                options: ["Foveaux Strait", "Tasman Strait", "Cook Strait", "Wellington Passage"],
+                correct: 2,
+                explanation: "Cook Strait separates the North and South Islands and is named after Captain James Cook."
+            },
+            {
+                question: "Which famous film director is from Wellington?",
+                options: ["Steven Spielberg", "Peter Jackson", "James Cameron", "Christopher Nolan"],
+                correct: 1,
+                explanation: "Peter Jackson, director of The Lord of the Rings trilogy, is from Wellington and filmed much of the series in New Zealand."
+            },
+            {
+                question: "What is the name of Wellington's main street?",
+                options: ["Queen Street", "Cuba Street", "Lambton Quay", "Courtenay Place"],
+                correct: 2,
+                explanation: "Lambton Quay is Wellington's main street, named after Lord Lambton, an early Governor of New Zealand."
+            },
+            {
+                question: "Which professional sports team is based in Wellington?",
+                options: ["Wellington Phoenix", "Wellington Warriors", "Wellington Blues", "Wellington Crusaders"],
+                correct: 0,
+                explanation: "The Wellington Phoenix is the city's professional football (soccer) team competing in the A-League."
+            },
+            {
+                question: "When did Wellington become New Zealand's capital?",
+                options: ["1840", "1865", "1900", "1907"],
+                correct: 1,
+                explanation: "Wellington became New Zealand's capital in 1865, replacing Auckland due to its more central location."
+            },
+            {
+                question: "What is the name of the hill that overlooks Wellington?",
+                options: ["Mount Cook", "Mount Victoria", "Mount Eden", "One Tree Hill"],
+                correct: 1,
+                explanation: "Mount Victoria (Matairangi) offers panoramic views of Wellington and was used as a filming location for The Lord of the Rings."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        function loadQuestion() {
+            const question = triviaQuestions[currentQuestionIndex];
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => selectAnswer(index);
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            document.getElementById('feedback').classList.remove('show');
+            document.getElementById('nextBtn').style.display = 'none';
+            answered = false;
+            
+            updateProgress();
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (answered) return;
+            
+            answered = true;
+            const question = triviaQuestions[currentQuestionIndex];
+            const options = document.querySelectorAll('.option');
+            const feedback = document.getElementById('feedback');
+            
+            options.forEach((option, index) => {
+                if (index === question.correct) {
+                    option.classList.add('correct');
+                } else if (index === selectedIndex) {
+                    option.classList.add('incorrect');
+                }
+                option.style.cursor = 'default';
+            });
+            
+            if (selectedIndex === question.correct) {
+                score++;
+                document.getElementById('currentScore').textContent = score;
+                feedback.textContent = '✓ Correct! ' + question.explanation;
+                feedback.className = 'feedback correct show';
+            } else {
+                feedback.textContent = '✗ Incorrect. ' + question.explanation;
+                feedback.className = 'feedback incorrect show';
+            }
+            
+            document.getElementById('nextBtn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < triviaQuestions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / triviaQuestions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function showResults() {
+            document.getElementById('quizContent').style.display = 'none';
+            document.getElementById('resultsContainer').style.display = 'block';
+            
+            const percentage = Math.round((score / triviaQuestions.length) * 100);
+            document.getElementById('finalScore').textContent = score + '/' + triviaQuestions.length;
+            
+            let message = '';
+            if (percentage === 100) {
+                message = '🏆 Perfect score! You\'re a Wellington expert!';
+            } else if (percentage >= 80) {
+                message = '🎉 Excellent! You know Wellington very well!';
+            } else if (percentage >= 60) {
+                message = '👍 Good job! You have solid knowledge of Wellington!';
+            } else if (percentage >= 40) {
+                message = '📚 Not bad! Keep learning about Wellington!';
+            } else {
+                message = '🔍 Time to explore Wellington more!';
+            }
+            
+            document.getElementById('performanceMessage').textContent = message;
+        }
+
+        document.getElementById('nextBtn').onclick = nextQuestion;
+
+        // Initialize the quiz
+        loadQuestion();
+    </script>
+</body>
+</html>

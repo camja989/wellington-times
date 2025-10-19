@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - The Wellington Times</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .game-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .game-icon {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .game-card:nth-child(2) .game-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .game-card:nth-child(3) .game-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .game-card:nth-child(4) .game-icon {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .game-info {
+            padding: 25px;
+        }
+        
+        .game-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .game-desc {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+        
+        .difficulty.easy {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .difficulty.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty.hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="date" id="currentDate"></div>
+                <div class="weather">
+                    <span>☁</span>
+                    <span id="weather">Wellington: 16°C, Partly Cloudy</span>
+                </div>
+            </div>
+        </div>
+        <div class="logo-section">
+            <a href="../index.html" class="logo">The Wellington Times</a>
+            <div class="tagline">Truth • Integrity • Community • Since 2025</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="politics.html">Politics</a></li>
+                <li><a href="business.html">Business</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="sports.html">Sports</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="opinion.html">Opinion</a></li>
+                <li><a href="weather.html">Weather</a></li>
+                <li><a href="games.html">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="main-content" style="grid-template-columns: 1fr;">
+            <div style="text-align: center; margin: 40px 0;">
+                <h1 class="section-title">Wellington Times Games</h1>
+                <p style="font-size: 18px; color: var(--text-light); margin-top: 10px;">
+                    Take a break and challenge yourself with our collection of Wellington-themed games!
+                </p>
+            </div>
+
+            <div class="games-grid">
+                <div class="game-card" onclick="window.location.href='../games/trivia.html'">
+                    <div class="game-icon">🧠</div>
+                    <div class="game-info">
+                        <h3 class="game-name">Wellington Trivia</h3>
+                        <p class="game-desc">Test your knowledge about New Zealand's capital with 10 challenging questions about Wellington's history, landmarks, and culture.</p>
+                        <span class="difficulty medium">Medium</span>
+                    </div>
+                </div>
+
+                <div class="game-card" onclick="window.location.href='../games/wordsearch.html'">
+                    <div class="game-icon">🔍</div>
+                    <div class="game-info">
+                        <h3 class="game-name">Word Search</h3>
+                        <p class="game-desc">Find Wellington landmarks and locations hidden in the grid. Race against the clock to find all the words!</p>
+                        <span class="difficulty easy">Easy</span>
+                    </div>
+                </div>
+
+                <div class="game-card" onclick="window.location.href='../games/memory.html'">
+                    <div class="game-icon">🎴</div>
+                    <div class="game-info">
+                        <h3 class="game-name">Memory Match</h3>
+                        <p class="game-desc">Match pairs of Wellington icons and landmarks. Test your memory and try to complete the game in as few moves as possible!</p>
+                        <span class="difficulty medium">Medium</span>
+                    </div>
+                </div>
+
+                <div class="game-card" onclick="alert('Coming Soon! This game is under development.')">
+                    <div class="game-icon">🎯</div>
+                    <div class="game-info">
+                        <h3 class="game-name">Daily Challenge</h3>
+                        <p class="game-desc">New puzzle every day! Solve today's Wellington-themed challenge and compete with other readers on the leaderboard.</p>
+                        <span class="difficulty hard">Hard</span>
+                        <span style="display: block; margin-top: 10px; color: var(--accent-color); font-size: 12px; font-weight: bold;">COMING SOON</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Stats Section -->
+            <div style="background: var(--bg-light); padding: 40px; border-radius: 8px; margin-top: 40px;">
+                <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 30px;">Why Play Our Games?</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">📚</div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">Learn About Wellington</h3>
+                        <p style="color: var(--text-light);">Discover interesting facts and history while having fun</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">🏆</div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">Challenge Yourself</h3>
+                        <p style="color: var(--text-light);">Test your skills and improve your scores over time</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">🎮</div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">Take a Break</h3>
+                        <p style="color: var(--text-light);">Enjoy a quick mental break with engaging puzzles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Mission & Values</a></li>
+                        <li><a href="#">Editorial Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Sections</h3>
+                    <ul>
+                        <li><a href="politics.html">Politics</a></li>
+                        <li><a href="business.html">Business</a></li>
+                        <li><a href="technology.html">Technology</a></li>
+                        <li><a href="sports.html">Sports</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Subscribe</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">RSS Feeds</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Send News Tips</a></li>
+                        <li><a href="#">Letters to Editor</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Wellington Times. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

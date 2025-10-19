@@ -4,501 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wellington Times - Wellington's Premier Digital Newspaper</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #1a1a2e;
-            --accent-color: #c41e3a;
-            --text-dark: #333;
-            --text-light: #666;
-            --bg-light: #f8f9fa;
-            --border-color: #dee2e6;
-        }
-
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background: white;
-            border-bottom: 3px solid var(--primary-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .header-top {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        .header-top .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .weather {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-section {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 48px;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-family: 'Old English Text MT', 'Times New Roman', serif;
-            letter-spacing: 2px;
-        }
-
-        .tagline {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--primary-color);
-            padding: 0;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        nav li {
-            position: relative;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            display: block;
-            transition: background 0.3s;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        nav a:hover {
-            background: var(--accent-color);
-        }
-
-        /* Breaking News Banner */
-        .breaking-news {
-            background: var(--accent-color);
-            color: white;
-            padding: 10px 0;
-            overflow: hidden;
-        }
-
-        .breaking-news .container {
-            display: flex;
-            align-items: center;
-        }
-
-        .breaking-label {
-            background: rgba(0,0,0,0.3);
-            padding: 5px 15px;
-            margin-right: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 1px;
-        }
-
-        .breaking-text {
-            animation: scroll 30s linear infinite;
-            white-space: nowrap;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Main Content */
-        .main-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        /* Featured Article */
-        .featured-article {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .featured-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .featured-content {
-            padding: 25px;
-        }
-
-        .category-tag {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 4px 12px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .article-title {
-            font-size: 32px;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .article-meta {
-            color: var(--text-light);
-            font-size: 14px;
-            margin-bottom: 15px;
-            display: flex;
-            gap: 15px;
-        }
-
-        .article-excerpt {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-        }
-
-        .read-more {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: gap 0.3s;
-        }
-
-        .read-more:hover {
-            gap: 10px;
-        }
-
-        /* Article Grid */
-        .article-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .article-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .article-card-image {
-            height: 150px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            position: relative;
-        }
-
-        .article-card-content {
-            padding: 15px;
-        }
-
-        .article-card-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .article-card-excerpt {
-            font-size: 14px;
-            color: var(--text-light);
-            line-height: 1.4;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
-        .sidebar-section {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .sidebar-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-        }
-
-        .trending-item {
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .trending-item:last-child {
-            border-bottom: none;
-        }
-
-        .trending-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: var(--accent-color);
-            color: white;
-            text-align: center;
-            line-height: 30px;
-            border-radius: 50%;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        .trending-title {
-            font-size: 14px;
-            line-height: 1.4;
-            color: var(--text-dark);
-            display: inline;
-        }
-
-        /* Opinion Section */
-        .opinion-section {
-            background: var(--bg-light);
-            padding: 40px 0;
-            margin: 40px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            font-size: 36px;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .opinion-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .opinion-card {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .author-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .author-name {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .author-title {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 40px 0 20px;
-            margin-top: 60px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            line-height: 2;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 14px;
-            color: rgba(255,255,255,0.8);
-        }
-
-        /* Subscribe Form */
-        .subscribe-form {
-            display: flex;
-            margin-top: 15px;
-        }
-
-        .subscribe-form input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-        }
-
-        .subscribe-form button {
-            padding: 10px 20px;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .subscribe-form button:hover {
-            background: #a01729;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-
-            .article-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .opinion-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .logo {
-                font-size: 32px;
-            }
-
-            nav ul {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                position: static;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -518,14 +24,15 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#politics">Politics</a></li>
-                <li><a href="#business">Business</a></li>
-                <li><a href="#technology">Technology</a></li>
-                <li><a href="#sports">Sports</a></li>
-                <li><a href="#culture">Culture</a></li>
-                <li><a href="#opinion">Opinion</a></li>
-                <li><a href="#weather">Weather</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pages/politics.html">Politics</a></li>
+                <li><a href="pages/business.html">Business</a></li>
+                <li><a href="pages/technology.html">Technology</a></li>
+                <li><a href="pages/sports.html">Sports</a></li>
+                <li><a href="pages/culture.html">Culture</a></li>
+                <li><a href="pages/opinion.html">Opinion</a></li>
+                <li><a href="pages/weather.html">Weather</a></li>
+                <li><a href="pages/games.html">Games</a></li>
             </ul>
         </nav>
     </header>
@@ -567,7 +74,7 @@
 
                 <!-- Article Grid -->
                 <div class="article-grid">
-                    <div class="article-card" onclick="handleArticleClick('Te Papa Exhibition')">
+                    <div class="article-card" onclick="window.location.href='articles/tepapa-exhibition.html'">
                         <div class="article-card-image">
                             <div class="image-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">Te Papa</div>
                         </div>
@@ -578,7 +85,7 @@
                         </div>
                     </div>
 
-                    <div class="article-card" onclick="handleArticleClick('Wellington Phoenix')">
+                    <div class="article-card" onclick="window.location.href='articles/phoenix-comeback.html'">
                         <div class="article-card-image">
                             <div class="image-placeholder" style="background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);">Sports</div>
                         </div>
@@ -589,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="article-card" onclick="handleArticleClick('Tech Innovation')">
+                    <div class="article-card" onclick="window.location.href='articles/startup-funding.html'">
                         <div class="article-card-image">
                             <div class="image-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">Tech</div>
                         </div>
@@ -600,14 +107,14 @@
                         </div>
                     </div>
 
-                    <div class="article-card" onclick="handleArticleClick('Housing Crisis')">
+                    <div class="article-card" onclick="window.location.href='articles/climate-legislation.html'">
                         <div class="article-card-image">
                             <div class="image-placeholder" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">Business</div>
                         </div>
                         <div class="article-card-content">
-                            <span class="category-tag">Business</span>
-                            <h3 class="article-card-title">Housing Affordability Crisis: New Government Measures Announced</h3>
-                            <p class="article-card-excerpt">Bold initiatives aim to address Wellington's growing housing challenges.</p>
+                            <span class="category-tag">Politics</span>
+                            <h3 class="article-card-title">Parliament Passes Historic Climate Change Legislation</h3>
+                            <p class="article-card-excerpt">Landmark bill sets ambitious carbon neutrality targets for New Zealand.</p>
                         </div>
                     </div>
                 </div>
@@ -730,11 +237,12 @@
                 <div class="footer-section">
                     <h3>Sections</h3>
                     <ul>
-                        <li><a href="#">Politics</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Culture</a></li>
+                        <li><a href="pages/politics.html">Politics</a></li>
+                        <li><a href="pages/business.html">Business</a></li>
+                        <li><a href="pages/technology.html">Technology</a></li>
+                        <li><a href="pages/sports.html">Sports</a></li>
+                        <li><a href="pages/culture.html">Culture</a></li>
+                        <li><a href="pages/games.html">Games</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -762,89 +270,6 @@
         </div>
     </footer>
 
-    <script>
-        // Set current date
-        function setCurrentDate() {
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const today = new Date();
-            document.getElementById('currentDate').textContent = today.toLocaleDateString('en-NZ', options);
-            document.getElementById('featuredDate').textContent = today.toLocaleDateString('en-NZ', { month: 'short', day: 'numeric', year: 'numeric' });
-        }
-
-        // Handle article clicks
-        function handleArticleClick(articleTitle) {
-            alert(`Opening article: ${articleTitle}\n\nIn a real implementation, this would navigate to the full article page.`);
-        }
-
-        // Handle newsletter subscription
-        function handleSubscribe(event) {
-            event.preventDefault();
-            const email = event.target.querySelector('input[type="email"]').value;
-            alert(`Thank you for subscribing!\n\nWelcome to The Wellington Times daily newsletter. We'll send updates to: ${email}`);
-            event.target.reset();
-        }
-
-        // Simulate weather updates
-        function updateWeather() {
-            const weatherConditions = [
-                { temp: 16, condition: 'Partly Cloudy', icon: '☁' },
-                { temp: 14, condition: 'Light Rain', icon: '🌧' },
-                { temp: 18, condition: 'Sunny', icon: '☀' },
-                { temp: 12, condition: 'Windy', icon: '💨' }
-            ];
-            
-            const randomWeather = weatherConditions[Math.floor(Math.random() * weatherConditions.length)];
-            document.getElementById('weather').textContent = `Wellington: ${randomWeather.temp}°C, ${randomWeather.condition}`;
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            setCurrentDate();
-            
-            // Update weather every 30 seconds (simulated)
-            setInterval(updateWeather, 30000);
-            
-            // Add smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-            // Add dynamic loading animation for images
-            const imagePlaceholders = document.querySelectorAll('.image-placeholder');
-            imagePlaceholders.forEach(placeholder => {
-                placeholder.style.opacity = '0';
-                setTimeout(() => {
-                    placeholder.style.transition = 'opacity 0.5s';
-                    placeholder.style.opacity = '1';
-                }, Math.random() * 1000);
-            });
-        });
-
-        // Simulate live updates
-        function simulateLiveUpdate() {
-            const updates = [
-                "Wellington City Council approves new waterfront development plan",
-                "All Blacks announce squad for upcoming test series",
-                "Tech hub initiative launched to boost Wellington's digital economy",
-                "Severe weather warning issued for Wellington region",
-                "Wellington Phoenix sign international striker"
-            ];
-            
-            const breakingText = document.querySelector('.breaking-text');
-            if (breakingText) {
-                const randomUpdates = updates.sort(() => 0.5 - Math.random()).slice(0, 3);
-                breakingText.textContent = randomUpdates.join(' • ');
-            }
-        }
-
-        // Update breaking news every minute
-        setInterval(simulateLiveUpdate, 60000);
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

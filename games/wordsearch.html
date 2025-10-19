@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellington Word Search - The Wellington Times</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .word-search-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 40px);
+            gap: 2px;
+            margin: 30px auto;
+            width: fit-content;
+        }
+        
+        .grid-cell {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            background: white;
+            transition: all 0.2s;
+        }
+        
+        .grid-cell:hover {
+            background: var(--bg-light);
+        }
+        
+        .grid-cell.selected {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+        
+        .grid-cell.found {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        
+        .word-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .word-item {
+            padding: 10px 15px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .word-item.found {
+            background: #d4edda;
+            color: #155724;
+            text-decoration: line-through;
+        }
+        
+        .game-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="date" id="currentDate"></div>
+                <div class="weather">
+                    <span>☁</span>
+                    <span id="weather">Wellington: 16°C, Partly Cloudy</span>
+                </div>
+            </div>
+        </div>
+        <div class="logo-section">
+            <a href="../index.html" class="logo">The Wellington Times</a>
+            <div class="tagline">Truth • Integrity • Community • Since 2025</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/politics.html">Politics</a></li>
+                <li><a href="../pages/business.html">Business</a></li>
+                <li><a href="../pages/technology.html">Technology</a></li>
+                <li><a href="../pages/sports.html">Sports</a></li>
+                <li><a href="../pages/culture.html">Culture</a></li>
+                <li><a href="../pages/opinion.html">Opinion</a></li>
+                <li><a href="../pages/weather.html">Weather</a></li>
+                <li><a href="../pages/games.html">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="main-content" style="grid-template-columns: 1fr;">
+            <div class="game-container">
+                <div class="game-header">
+                    <h1 class="game-title">Wellington Word Search</h1>
+                    <p class="game-description">Find all the Wellington landmarks and locations hidden in the grid!</p>
+                </div>
+
+                <div class="game-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="wordsFound">0</div>
+                        <div class="stat-label">Words Found</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="totalWords">8</div>
+                        <div class="stat-label">Total Words</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="timer">0:00</div>
+                        <div class="stat-label">Time</div>
+                    </div>
+                </div>
+
+                <div class="word-list" id="wordList"></div>
+
+                <div class="word-search-grid" id="wordSearchGrid"></div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn" onclick="location.reload()">New Game</button>
+                    <a href="../pages/games.html" class="btn" style="margin-left: 10px; background: var(--primary-color); text-decoration: none; display: inline-block;">More Games</a>
+                </div>
+
+                <div id="winMessage" style="display: none; text-align: center; margin-top: 30px; padding: 20px; background: #d4edda; border-radius: 8px;">
+                    <h2 style="color: #155724;">🎉 Congratulations!</h2>
+                    <p style="color: #155724; font-size: 18px;">You found all the words in <span id="finalTime"></span>!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Mission & Values</a></li>
+                        <li><a href="#">Editorial Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Sections</h3>
+                    <ul>
+                        <li><a href="../pages/politics.html">Politics</a></li>
+                        <li><a href="../pages/business.html">Business</a></li>
+                        <li><a href="../pages/technology.html">Technology</a></li>
+                        <li><a href="../pages/sports.html">Sports</a></li>
+                        <li><a href="../pages/culture.html">Culture</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Subscribe</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">RSS Feeds</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Send News Tips</a></li>
+                        <li><a href="#">Letters to Editor</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Wellington Times. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const GRID_SIZE = 12;
+        const words = [
+            'TEPAPA',
+            'ZEALANDIA',
+            'CABLECAR',
+            'BEEHIVE',
+            'LAMBTON',
+            'KELBURN',
+            'CUBA',
+            'PHOENIX'
+        ];
+
+        let grid = [];
+        let foundWords = [];
+        let selectedCells = [];
+        let isSelecting = false;
+        let startTime = Date.now();
+        let timerInterval;
+
+        function createGrid() {
+            grid = Array(GRID_SIZE).fill().map(() => Array(GRID_SIZE).fill(''));
+            
+            // Place words in the grid
+            words.forEach(word => {
+                let placed = false;
+                let attempts = 0;
+                
+                while (!placed && attempts < 100) {
+                    const direction = Math.floor(Math.random() * 3); // 0: horizontal, 1: vertical, 2: diagonal
+                    const row = Math.floor(Math.random() * GRID_SIZE);
+                    const col = Math.floor(Math.random() * GRID_SIZE);
+                    
+                    if (canPlaceWord(word, row, col, direction)) {
+                        placeWord(word, row, col, direction);
+                        placed = true;
+                    }
+                    attempts++;
+                }
+            });
+            
+            // Fill empty cells with random letters
+            for (let i = 0; i < GRID_SIZE; i++) {
+                for (let j = 0; j < GRID_SIZE; j++) {
+                    if (grid[i][j] === '') {
+                        grid[i][j] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                    }
+                }
+            }
+        }
+
+        function canPlaceWord(word, row, col, direction) {
+            if (direction === 0) { // horizontal
+                if (col + word.length > GRID_SIZE) return false;
+                for (let i = 0; i < word.length; i++) {
+                    if (grid[row][col + i] !== '' && grid[row][col + i] !== word[i]) return false;
+                }
+            } else if (direction === 1) { // vertical
+                if (row + word.length > GRID_SIZE) return false;
+                for (let i = 0; i < word.length; i++) {
+                    if (grid[row + i][col] !== '' && grid[row + i][col] !== word[i]) return false;
+                }
+            } else { // diagonal
+                if (row + word.length > GRID_SIZE || col + word.length > GRID_SIZE) return false;
+                for (let i = 0; i < word.length; i++) {
+                    if (grid[row + i][col + i] !== '' && grid[row + i][col + i] !== word[i]) return false;
+                }
+            }
+            return true;
+        }
+
+        function placeWord(word, row, col, direction) {
+            for (let i = 0; i < word.length; i++) {
+                if (direction === 0) {
+                    grid[row][col + i] = word[i];
+                } else if (direction === 1) {
+                    grid[row + i][col] = word[i];
+                } else {
+                    grid[row + i][col + i] = word[i];
+                }
+            }
+        }
+
+        function renderGrid() {
+            const gridElement = document.getElementById('wordSearchGrid');
+            gridElement.innerHTML = '';
+            
+            for (let i = 0; i < GRID_SIZE; i++) {
+                for (let j = 0; j < GRID_SIZE; j++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'grid-cell';
+                    cell.textContent = grid[i][j];
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    
+                    cell.addEventListener('mousedown', startSelection);
+                    cell.addEventListener('mouseenter', continueSelection);
+                    cell.addEventListener('mouseup', endSelection);
+                    
+                    gridElement.appendChild(cell);
+                }
+            }
+        }
+
+        function renderWordList() {
+            const wordListElement = document.getElementById('wordList');
+            wordListElement.innerHTML = '';
+            
+            words.forEach(word => {
+                const wordItem = document.createElement('div');
+                wordItem.className = 'word-item';
+                wordItem.textContent = word;
+                wordItem.id = 'word-' + word;
+                wordListElement.appendChild(wordItem);
+            });
+        }
+
+        function startSelection(e) {
+            isSelecting = true;
+            selectedCells = [e.target];
+            e.target.classList.add('selected');
+        }
+
+        function continueSelection(e) {
+            if (!isSelecting) return;
+            if (!selectedCells.includes(e.target)) {
+                selectedCells.push(e.target);
+                e.target.classList.add('selected');
+            }
+        }
+
+        function endSelection() {
+            if (!isSelecting) return;
+            isSelecting = false;
+            
+            const selectedWord = selectedCells.map(cell => cell.textContent).join('');
+            const reversedWord = selectedWord.split('').reverse().join('');
+            
+            if (words.includes(selectedWord) && !foundWords.includes(selectedWord)) {
+                foundWords.push(selectedWord);
+                markWordAsFound(selectedWord);
+            } else if (words.includes(reversedWord) && !foundWords.includes(reversedWord)) {
+                foundWords.push(reversedWord);
+                markWordAsFound(reversedWord);
+            } else {
+                selectedCells.forEach(cell => cell.classList.remove('selected'));
+            }
+            
+            selectedCells = [];
+            
+            if (foundWords.length === words.length) {
+                gameWon();
+            }
+        }
+
+        function markWordAsFound(word) {
+            selectedCells.forEach(cell => {
+                cell.classList.remove('selected');
+                cell.classList.add('found');
+            });
+            
+            document.getElementById('word-' + word).classList.add('found');
+            document.getElementById('wordsFound').textContent = foundWords.length;
+        }
+
+        function updateTimer() {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            document.getElementById('timer').textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        function gameWon() {
+            clearInterval(timerInterval);
+            const finalTime = document.getElementById('timer').textContent;
+            document.getElementById('finalTime').textContent = finalTime;
+            document.getElementById('winMessage').style.display = 'block';
+        }
+
+        // Prevent text selection
+        document.addEventListener('mouseup', () => {
+            if (isSelecting) {
+                endSelection();
+            }
+        });
+
+        // Initialize game
+        createGrid();
+        renderGrid();
+        renderWordList();
+        timerInterval = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>

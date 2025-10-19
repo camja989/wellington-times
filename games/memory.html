@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Match - The Wellington Times</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 120px);
+            gap: 15px;
+            margin: 30px auto;
+            width: fit-content;
+        }
+        
+        .memory-card {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        
+        .memory-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .memory-card.matched {
+            opacity: 0.6;
+            cursor: default;
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+        
+        .card-front {
+            background: var(--primary-color);
+            color: white;
+            font-size: 40px;
+        }
+        
+        .card-back {
+            background: white;
+            font-size: 40px;
+            transform: rotateY(180deg);
+            border: 3px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="date" id="currentDate"></div>
+                <div class="weather">
+                    <span>☁</span>
+                    <span id="weather">Wellington: 16°C, Partly Cloudy</span>
+                </div>
+            </div>
+        </div>
+        <div class="logo-section">
+            <a href="../index.html" class="logo">The Wellington Times</a>
+            <div class="tagline">Truth • Integrity • Community • Since 2025</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/politics.html">Politics</a></li>
+                <li><a href="../pages/business.html">Business</a></li>
+                <li><a href="../pages/technology.html">Technology</a></li>
+                <li><a href="../pages/sports.html">Sports</a></li>
+                <li><a href="../pages/culture.html">Culture</a></li>
+                <li><a href="../pages/opinion.html">Opinion</a></li>
+                <li><a href="../pages/weather.html">Weather</a></li>
+                <li><a href="../pages/games.html">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="main-content" style="grid-template-columns: 1fr;">
+            <div class="game-container">
+                <div class="game-header">
+                    <h1 class="game-title">Wellington Memory Match</h1>
+                    <p class="game-description">Match pairs of Wellington icons and landmarks!</p>
+                </div>
+
+                <div class="score-board">
+                    <div class="score-item">
+                        <div class="score-label">Moves</div>
+                        <div class="score-value" id="moves">0</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Pairs Found</div>
+                        <div class="score-value" id="pairsFound">0</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">Time</div>
+                        <div class="score-value" id="timer">0:00</div>
+                    </div>
+                </div>
+
+                <div class="memory-grid" id="memoryGrid"></div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn" onclick="initGame()">New Game</button>
+                    <a href="../pages/games.html" class="btn" style="margin-left: 10px; background: var(--primary-color); text-decoration: none; display: inline-block;">More Games</a>
+                </div>
+
+                <div id="winMessage" style="display: none; text-align: center; margin-top: 30px; padding: 20px; background: #d4edda; border-radius: 8px;">
+                    <h2 style="color: #155724;">🎉 Congratulations!</h2>
+                    <p style="color: #155724; font-size: 18px;">You completed the game in <span id="finalMoves"></span> moves and <span id="finalTime"></span>!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Mission & Values</a></li>
+                        <li><a href="#">Editorial Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Sections</h3>
+                    <ul>
+                        <li><a href="../pages/politics.html">Politics</a></li>
+                        <li><a href="../pages/business.html">Business</a></li>
+                        <li><a href="../pages/technology.html">Technology</a></li>
+                        <li><a href="../pages/sports.html">Sports</a></li>
+                        <li><a href="../pages/culture.html">Culture</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Subscribe</a></li>
+                        <li><a href="#">Newsletters</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">RSS Feeds</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Send News Tips</a></li>
+                        <li><a href="#">Letters to Editor</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Wellington Times. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const icons = ['🚡', '🏛️', '⛰️', '🦜', '☕', '🌊', '⚽', '🎭'];
+        let cards = [];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let moves = 0;
+        let startTime = null;
+        let timerInterval = null;
+
+        function createCards() {
+            const cardValues = [...icons, ...icons];
+            cardValues.sort(() => Math.random() - 0.5);
+            
+            return cardValues.map((icon, index) => ({
+                id: index,
+                icon: icon,
+                flipped: false,
+                matched: false
+            }));
+        }
+
+        function renderCards() {
+            const grid = document.getElementById('memoryGrid');
+            grid.innerHTML = '';
+            
+            cards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'memory-card';
+                cardElement.dataset.id = card.id;
+                
+                if (card.flipped) cardElement.classList.add('flipped');
+                if (card.matched) cardElement.classList.add('matched');
+                
+                cardElement.innerHTML = `
+                    <div class="card-front">?</div>
+                    <div class="card-back">${card.icon}</div>
+                `;
+                
+                cardElement.addEventListener('click', () => flipCard(card.id));
+                grid.appendChild(cardElement);
+            });
+        }
+
+        function flipCard(id) {
+            const card = cards.find(c => c.id === id);
+            
+            if (card.flipped || card.matched || flippedCards.length === 2) return;
+            
+            if (!startTime) {
+                startTime = Date.now();
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+            
+            card.flipped = true;
+            flippedCards.push(card);
+            renderCards();
+            
+            if (flippedCards.length === 2) {
+                moves++;
+                document.getElementById('moves').textContent = moves;
+                checkMatch();
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            
+            setTimeout(() => {
+                if (card1.icon === card2.icon) {
+                    card1.matched = true;
+                    card2.matched = true;
+                    matchedPairs++;
+                    document.getElementById('pairsFound').textContent = matchedPairs;
+                    
+                    if (matchedPairs === icons.length) {
+                        gameWon();
+                    }
+                } else {
+                    card1.flipped = false;
+                    card2.flipped = false;
+                }
+                
+                flippedCards = [];
+                renderCards();
+            }, 1000);
+        }
+
+        function updateTimer() {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const minutes = Math.floor(elapsed / 60);
+            const seconds = elapsed % 60;
+            document.getElementById('timer').textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        function gameWon() {
+            clearInterval(timerInterval);
+            const finalTime = document.getElementById('timer').textContent;
+            document.getElementById('finalMoves').textContent = moves;
+            document.getElementById('finalTime').textContent = finalTime;
+            document.getElementById('winMessage').style.display = 'block';
+        }
+
+        function initGame() {
+            cards = createCards();
+            flippedCards = [];
+            matchedPairs = 0;
+            moves = 0;
+            startTime = null;
+            
+            if (timerInterval) clearInterval(timerInterval);
+            
+            document.getElementById('moves').textContent = '0';
+            document.getElementById('pairsFound').textContent = '0';
+            document.getElementById('timer').textContent = '0:00';
+            document.getElementById('winMessage').style.display = 'none';
+            
+            renderCards();
+        }
+
+        // Initialize game
+        initGame();
+    </script>
+</body>
+</html>
