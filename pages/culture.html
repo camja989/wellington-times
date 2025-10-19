@@ -27,7 +27,7 @@
                 <li><a href="business.html">Business</a></li>
                 <li><a href="technology.html">Technology</a></li>
                 <li><a href="sports.html">Sports</a></li>
-                <li><a href="culture.html">Culture</a></li>
+                <li><a href="culture.html" class="active">Culture</a></li>
                 <li><a href="opinion.html">Opinion</a></li>
                 <li><a href="weather.html">Weather</a></li>
                 <li><a href="games.html">Games</a></li>
@@ -35,154 +35,34 @@
         </nav>
     </header>
 
-    <div class="breaking-news">
-        <div class="container">
-            <span class="breaking-label">Culture</span>
-            <span class="breaking-text">Te Papa unveils new Māori art exhibition • Wellington Film Festival announces lineup • International Dance Festival returns</span>
-        </div>
-    </div>
-
     <div class="container">
         <div class="main-content">
             <div class="main-column">
-                <h1 style="font-size: 36px; color: var(--primary-color); margin-bottom: 30px;">Culture</h1>
+                <h1 class="page-title">Culture</h1>
                 
-                <article class="featured-article">
-                    <div class="featured-image">
-                        <div class="image-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">Te Papa Museum</div>
-                    </div>
-                    <div class="featured-content">
-                        <span class="category-tag">Museums</span>
-                        <h2 class="article-title">Te Papa Unveils Groundbreaking Interactive Māori History Exhibition</h2>
-                        <div class="article-meta">
-                            <span>By Aroha Williams</span>
-                            <span>•</span>
-                            <span id="featuredDate"></span>
-                            <span>•</span>
-                            <span>6 min read</span>
-                        </div>
-                        <p class="article-excerpt">
-                            Museum of New Zealand Te Papa Tongarewa has launched "Tūrangawaewae: Our Place to Stand," a revolutionary exhibition that uses cutting-edge technology to bring 1,000 years of Māori history to life. The exhibition combines traditional taonga (treasures) with augmented reality, holographic displays, and interactive storytelling.
-                        </p>
-                        <p class="article-excerpt">
-                            Visitors can experience virtual reality recreations of pre-European Māori settlements, hear traditional waiata (songs) performed by ancestors, and interact with digital versions of historic artifacts. The exhibition was developed in close consultation with iwi (tribes) from across New Zealand, ensuring cultural authenticity and respectful representation.
-                        </p>
-                        <p class="article-excerpt">
-                            "This exhibition reimagines how we share our stories," said curator Hemi Ngata. "It honors our past while embracing the future, allowing younger generations to connect with their heritage in meaningful new ways." The exhibition opens to the public next month and will run for two years.
-                        </p>
-                        <a href="../articles/tepapa-exhibition.html" class="read-more">Read full article →</a>
-                    </div>
-                </article>
-
-                <div class="article-grid">
-                    <div class="article-card">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">Film</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Film</span>
-                            <h3 class="article-card-title">New Zealand International Film Festival Returns to Wellington</h3>
-                            <p class="article-card-excerpt">Three weeks of world-class cinema featuring 150 films from 40 countries.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">Music</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Music</span>
-                            <h3 class="article-card-title">Wellington Jazz Festival Celebrates 30th Anniversary</h3>
-                            <p class="article-card-excerpt">International legends and local talent unite for milestone celebration.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">Theatre</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Theatre</span>
-                            <h3 class="article-card-title">Royal New Zealand Ballet Announces New Season</h3>
-                            <p class="article-card-excerpt">Ambitious program includes world premiere and classic masterpieces.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">Arts</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Visual Arts</span>
-                            <h3 class="article-card-title">City Gallery Hosts International Contemporary Art Exhibition</h3>
-                            <p class="article-card-excerpt">Renowned artists from five continents showcase latest works in Wellington.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">Food</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Food & Wine</span>
-                            <h3 class="article-card-title">Wellington Restaurant Named Best in Australasia</h3>
-                            <p class="article-card-excerpt">Local dining establishment receives prestigious international award.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);">Literature</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Books</span>
-                            <h3 class="article-card-title">Wellington Writers Week Brings Literary Giants to Capital</h3>
-                            <p class="article-card-excerpt">Award-winning authors and poets headline annual festival.</p>
-                        </div>
-                    </div>
+                <div style="text-align: center; padding: 80px 20px; background: var(--bg-light); border-radius: 8px; margin: 40px 0;">
+                    <div style="font-size: 80px; margin-bottom: 20px;">🎭</div>
+                    <h2 style="margin-bottom: 15px;">Arts & Culture Coming Soon</h2>
+                    <p style="color: var(--text-light); font-size: 18px; max-width: 600px; margin: 0 auto 25px;">
+                        We're curating our culture section to showcase Wellington's vibrant arts scene, events, entertainment, and creative community.
+                    </p>
+                    <p style="color: var(--text-light);">
+                        <a href="../pages/contact/news-tips.html" style="color: var(--accent-color);">Share event news</a> • 
+                        <a href="../pages/about/careers.html" style="color: var(--accent-color);">Join our team</a>
+                    </p>
                 </div>
             </div>
-
+            
             <aside class="sidebar">
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">What's On</h2>
-                    <div style="font-size: 14px;">
-                        <div style="margin-bottom: 15px;">
-                            <strong>Cuba Street Carnival</strong><br>
-                            <span style="color: var(--text-light);">Saturday, 12pm-10pm</span>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <strong>Symphony Orchestra Concert</strong><br>
-                            <span style="color: var(--text-light);">Friday, 7:30pm</span>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <strong>Art After Dark</strong><br>
-                            <span style="color: var(--text-light);">Thursday, 6pm-9pm</span>
-                        </div>
-                        <div>
-                            <strong>Matariki Festival</strong><br>
-                            <span style="color: var(--text-light);">June 15-30</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">Featured Venues</h2>
-                    <ul style="list-style: none; font-size: 14px;">
-                        <li style="margin-bottom: 10px;">🏛️ <a href="#" style="color: var(--text-dark); text-decoration: none;">Te Papa Tongarewa</a></li>
-                        <li style="margin-bottom: 10px;">🎭 <a href="#" style="color: var(--text-dark); text-decoration: none;">St James Theatre</a></li>
-                        <li style="margin-bottom: 10px;">🎨 <a href="#" style="color: var(--text-dark); text-decoration: none;">City Gallery Wellington</a></li>
-                        <li style="margin-bottom: 10px;">🎵 <a href="#" style="color: var(--text-dark); text-decoration: none;">Michael Fowler Centre</a></li>
+                <div class="sidebar-widget">
+                    <h3>What We'll Cover</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li>🎨 Visual arts & galleries</li>
+                        <li>🎬 Film & television</li>
+                        <li>🎵 Music & concerts</li>
+                        <li>📚 Books & literature</li>
+                        <li>🎪 Events & festivals</li>
                     </ul>
-                </div>
-
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">Culture Newsletter</h2>
-                    <p style="font-size: 14px; margin-bottom: 15px;">Weekly arts and culture highlights.</p>
-                    <form class="subscribe-form" onsubmit="handleSubscribe(event)">
-                        <input type="email" placeholder="Your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
                 </div>
             </aside>
         </div>
@@ -234,7 +114,6 @@
             </div>
         </div>
     </footer>
-
     <script src="../js/main.js"></script>
 </body>
 </html>

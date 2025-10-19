@@ -9,15 +9,11 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-top">
             <div class="container">
                 <div class="date" id="currentDate"></div>
-                <div class="weather">
-                    <span>☁</span>
-                    <span id="weather">Wellington: 16°C, Partly Cloudy</span>
-                </div>
+                <div class="weather"><span>☁</span><span id="weather">Wellington: 16°C, Partly Cloudy</span></div>
             </div>
         </div>
         <div class="logo-section">
@@ -30,7 +26,7 @@
                 <li><a href="politics.html">Politics</a></li>
                 <li><a href="business.html">Business</a></li>
                 <li><a href="technology.html">Technology</a></li>
-                <li><a href="sports.html">Sports</a></li>
+                <li><a href="sports.html" class="active">Sports</a></li>
                 <li><a href="culture.html">Culture</a></li>
                 <li><a href="opinion.html">Opinion</a></li>
                 <li><a href="weather.html">Weather</a></li>
@@ -39,181 +35,39 @@
         </nav>
     </header>
 
-    <!-- Breaking News -->
-    <div class="breaking-news">
-        <div class="container">
-            <span class="breaking-label">Breaking</span>
-            <span class="breaking-text">Phoenix secure dramatic 3-2 victory • Hurricanes announce new captain • Wellington Lions charge into playoffs</span>
-        </div>
-    </div>
-
-    <!-- Main Content -->
     <div class="container">
         <div class="main-content">
-            <!-- Main Column -->
             <div class="main-column">
-                <h1 style="font-size: 36px; color: var(--primary-color); margin-bottom: 30px;">Sports</h1>
+                <h1 class="page-title">Sports</h1>
                 
-                <!-- Featured Article -->
-                <article class="featured-article">
-                    <div class="featured-image">
-                        <div class="image-placeholder" style="background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);">Phoenix Football</div>
-                    </div>
-                    <div class="featured-content">
-                        <span class="category-tag">Football</span>
-                        <h2 class="article-title">Wellington Phoenix Stage Incredible Comeback in A-League Thriller</h2>
-                        <div class="article-meta">
-                            <span>By Marcus Chen</span>
-                            <span>•</span>
-                            <span id="featuredDate"></span>
-                            <span>•</span>
-                            <span>5 min read</span>
-                        </div>
-                        <p class="article-excerpt">
-                            In one of the most dramatic matches of the A-League season, Wellington Phoenix came from 2-0 down to secure a crucial 3-2 victory over Sydney FC at Sky Stadium. The win keeps the Phoenix firmly in contention for a playoff spot with just four games remaining in the regular season.
-                        </p>
-                        <p class="article-excerpt">
-                            Star striker David Ball scored twice in the second half before captain Alex Rufer netted the winner in the 89th minute, sending the 25,000-strong crowd into raptures. "This is what football is all about," said head coach Giancarlo Italiano. "The team showed incredible character and never gave up."
-                        </p>
-                        <p class="article-excerpt">
-                            The Phoenix have now won four of their last five matches and sit just three points outside the top six. Their next match is a crucial away fixture against Melbourne Victory, which could prove decisive in their playoff push.
-                        </p>
-                        <a href="../articles/phoenix-comeback.html" class="read-more">Read full article →</a>
-                    </div>
-                </article>
-
-                <!-- Article Grid -->
-                <div class="article-grid">
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">Rugby</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Rugby</span>
-                            <h3 class="article-card-title">Hurricanes Name New Captain for Super Rugby Season</h3>
-                            <p class="article-card-excerpt">Veteran All Black to lead the team as they aim for championship glory.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">Cricket</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Cricket</span>
-                            <h3 class="article-card-title">Firebirds Cruise to Victory in T20 Derby</h3>
-                            <p class="article-card-excerpt">Wellington-based team dominates local rivals with record-breaking performance.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">Netball</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Netball</span>
-                            <h3 class="article-card-title">Pulse Sign International Star for ANZ Season</h3>
-                            <p class="article-card-excerpt">Major signing announced as Wellington Pulse build championship-winning squad.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">Athletics</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Athletics</span>
-                            <h3 class="article-card-title">Local Athlete Breaks National Record at Track Championships</h3>
-                            <p class="article-card-excerpt">Wellington runner sets new mark in 1500m, eyes Olympic qualification.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);">Basketball</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Basketball</span>
-                            <h3 class="article-card-title">Saints Edge Closer to NBL Finals Berth</h3>
-                            <p class="article-card-excerpt">Wellington Saints continue hot streak with overtime victory.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">Community</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Community Sport</span>
-                            <h3 class="article-card-title">New Sports Complex Opens in Lower Hutt</h3>
-                            <p class="article-card-excerpt">State-of-the-art facility to serve growing Wellington region sports community.</p>
-                        </div>
-                    </div>
+                <div style="text-align: center; padding: 80px 20px; background: var(--bg-light); border-radius: 8px; margin: 40px 0;">
+                    <div style="font-size: 80px; margin-bottom: 20px;">⚽</div>
+                    <h2 style="margin-bottom: 15px;">Sports Coverage Coming Soon</h2>
+                    <p style="color: var(--text-light); font-size: 18px; max-width: 600px; margin: 0 auto 25px;">
+                        We're recruiting our sports team to bring you comprehensive coverage of Wellington Phoenix, Hurricanes, local clubs, and more.
+                    </p>
+                    <p style="color: var(--text-light);">
+                        <a href="../pages/contact/news-tips.html" style="color: var(--accent-color);">Send sports news</a> • 
+                        <a href="../pages/about/careers.html" style="color: var(--accent-color);">Join our team</a>
+                    </p>
                 </div>
             </div>
-
-            <!-- Sidebar -->
+            
             <aside class="sidebar">
-                <!-- Upcoming Fixtures -->
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">Upcoming Fixtures</h2>
-                    <div style="font-size: 14px;">
-                        <div style="padding: 10px 0; border-bottom: 1px solid var(--border-color);">
-                            <strong>Phoenix vs Melbourne</strong><br>
-                            Saturday 8:00 PM<br>
-                            <span style="color: var(--text-light);">A-League</span>
-                        </div>
-                        <div style="padding: 10px 0; border-bottom: 1px solid var(--border-color);">
-                            <strong>Hurricanes vs Crusaders</strong><br>
-                            Friday 7:05 PM<br>
-                            <span style="color: var(--text-light);">Super Rugby</span>
-                        </div>
-                        <div style="padding: 10px 0; border-bottom: 1px solid var(--border-color);">
-                            <strong>Lions vs Auckland</strong><br>
-                            Sunday 2:30 PM<br>
-                            <span style="color: var(--text-light);">NPC Rugby</span>
-                        </div>
-                        <div style="padding: 10px 0;">
-                            <strong>Pulse vs Magic</strong><br>
-                            Wednesday 7:30 PM<br>
-                            <span style="color: var(--text-light);">ANZ Netball</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Live Scores -->
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">Latest Results</h2>
-                    <div style="font-size: 14px;">
-                        <div style="padding: 10px 0; border-bottom: 1px solid var(--border-color);">
-                            <strong>Phoenix 3-2 Sydney FC</strong><br>
-                            <span style="color: var(--accent-color);">FULL TIME</span>
-                        </div>
-                        <div style="padding: 10px 0; border-bottom: 1px solid var(--border-color);">
-                            <strong>Hurricanes 28-21 Blues</strong><br>
-                            <span style="color: var(--accent-color);">FULL TIME</span>
-                        </div>
-                        <div style="padding: 10px 0;">
-                            <strong>Saints 89-85 Breakers</strong><br>
-                            <span style="color: var(--accent-color);">FULL TIME (OT)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Newsletter Signup -->
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">Sports Newsletter</h2>
-                    <p style="font-size: 14px; margin-bottom: 15px;">Get match updates, scores, and sports news daily.</p>
-                    <form class="subscribe-form" onsubmit="handleSubscribe(event)">
-                        <input type="email" placeholder="Your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
+                <div class="sidebar-widget">
+                    <h3>Sports We'll Cover</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li>🏉 Rugby & Hurricanes</li>
+                        <li>⚽ Phoenix & football</li>
+                        <li>🏏 Cricket</li>
+                        <li>🏀 Basketball & netball</li>
+                        <li>🏆 Local leagues</li>
+                    </ul>
                 </div>
             </aside>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -260,7 +114,6 @@
             </div>
         </div>
     </footer>
-
     <script src="../js/main.js"></script>
 </body>
 </html>

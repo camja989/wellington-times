@@ -9,15 +9,11 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-top">
             <div class="container">
                 <div class="date" id="currentDate"></div>
-                <div class="weather">
-                    <span>☁</span>
-                    <span id="weather">Wellington: 16°C, Partly Cloudy</span>
-                </div>
+                <div class="weather"><span>☁</span><span id="weather">Wellington: 16°C, Partly Cloudy</span></div>
             </div>
         </div>
         <div class="logo-section">
@@ -27,7 +23,7 @@
         <nav>
             <ul>
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="politics.html">Politics</a></li>
+                <li><a href="politics.html" class="active">Politics</a></li>
                 <li><a href="business.html">Business</a></li>
                 <li><a href="technology.html">Technology</a></li>
                 <li><a href="sports.html">Sports</a></li>
@@ -39,168 +35,39 @@
         </nav>
     </header>
 
-    <!-- Breaking News -->
-    <div class="breaking-news">
-        <div class="container">
-            <span class="breaking-label">Breaking</span>
-            <span class="breaking-text">Parliament passes historic climate legislation • Local elections: Early voting begins Monday • Council debates new transport plan</span>
-        </div>
-    </div>
-
-    <!-- Main Content -->
     <div class="container">
         <div class="main-content">
-            <!-- Main Column -->
             <div class="main-column">
-                <h1 style="font-size: 36px; color: var(--primary-color); margin-bottom: 30px;">Politics</h1>
+                <h1 class="page-title">Politics</h1>
                 
-                <!-- Featured Article -->
-                <article class="featured-article">
-                    <div class="featured-image">
-                        <div class="image-placeholder">Parliament Buildings</div>
-                    </div>
-                    <div class="featured-content">
-                        <span class="category-tag">National Politics</span>
-                        <h2 class="article-title">Parliament Passes Landmark Climate Change Legislation</h2>
-                        <div class="article-meta">
-                            <span>By Sarah Mitchell</span>
-                            <span>•</span>
-                            <span id="featuredDate"></span>
-                            <span>•</span>
-                            <span>8 min read</span>
-                        </div>
-                        <p class="article-excerpt">
-                            In a historic session lasting well into the night, New Zealand's Parliament has passed comprehensive climate change legislation that sets ambitious targets for carbon neutrality by 2050. The bill, which received cross-party support, establishes a framework for reducing greenhouse gas emissions and transitioning to renewable energy sources.
-                        </p>
-                        <p class="article-excerpt">
-                            Prime Minister addressed the House, stating: "This legislation represents a commitment to future generations. We are taking decisive action to address one of the greatest challenges of our time." The new law includes provisions for regular emissions reviews, accountability measures for industries, and incentives for green technology adoption.
-                        </p>
-                        <a href="../articles/climate-legislation.html" class="read-more">Read full article →</a>
-                    </div>
-                </article>
-
-                <!-- Article Grid -->
-                <div class="article-grid">
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">City Council</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Local Government</span>
-                            <h3 class="article-card-title">Wellington City Council Approves $2.3B Annual Budget</h3>
-                            <p class="article-card-excerpt">New budget prioritizes infrastructure, public transport, and affordable housing initiatives.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);">Elections</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Elections</span>
-                            <h3 class="article-card-title">Local Body Elections: Candidate Nominations Close Friday</h3>
-                            <p class="article-card-excerpt">Record number of candidates vie for council and mayoral positions across the region.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">Transport</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Infrastructure</span>
-                            <h3 class="article-card-title">Light Rail Project Receives Government Green Light</h3>
-                            <p class="article-card-excerpt">$6 billion investment to transform Wellington's public transport system approved.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">Housing</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Policy</span>
-                            <h3 class="article-card-title">New Housing Density Standards Proposed for Central Wellington</h3>
-                            <p class="article-card-excerpt">Council considers allowing up to six-story developments in suburban areas.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">Parliament</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">National Politics</span>
-                            <h3 class="article-card-title">Opposition Challenges Government's Education Reform Bill</h3>
-                            <p class="article-card-excerpt">Heated debate in Parliament over proposed changes to national curriculum.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-card" onclick="window.location.href='#'">
-                        <div class="article-card-image">
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">Treaty</div>
-                        </div>
-                        <div class="article-card-content">
-                            <span class="category-tag">Māori Affairs</span>
-                            <h3 class="article-card-title">Historic Treaty Settlement Reached with Local Iwi</h3>
-                            <p class="article-card-excerpt">Landmark agreement includes land return and cultural redress provisions.</p>
-                        </div>
-                    </div>
+                <div style="text-align: center; padding: 80px 20px; background: var(--bg-light); border-radius: 8px; margin: 40px 0;">
+                    <div style="font-size: 80px; margin-bottom: 20px;">🏛️</div>
+                    <h2 style="margin-bottom: 15px;">Political Coverage Coming Soon</h2>
+                    <p style="color: var(--text-light); font-size: 18px; max-width: 600px; margin: 0 auto 25px;">
+                        We're building our political team to bring you comprehensive coverage of Parliament, local government, and policy analysis.
+                    </p>
+                    <p style="color: var(--text-light);">
+                        <a href="../pages/contact/news-tips.html" style="color: var(--accent-color);">Send us a news tip</a> • 
+                        <a href="../pages/about/careers.html" style="color: var(--accent-color);">Join our team</a>
+                    </p>
                 </div>
             </div>
-
-            <!-- Sidebar -->
+            
             <aside class="sidebar">
-                <!-- Trending Stories -->
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">Trending Politics</h2>
-                    <div class="trending-item">
-                        <span class="trending-number">1</span>
-                        <span class="trending-title">Mayor announces re-election campaign</span>
-                    </div>
-                    <div class="trending-item">
-                        <span class="trending-number">2</span>
-                        <span class="trending-title">New Zealand-Australia trade deal signed</span>
-                    </div>
-                    <div class="trending-item">
-                        <span class="trending-number">3</span>
-                        <span class="trending-title">Water infrastructure investment approved</span>
-                    </div>
-                    <div class="trending-item">
-                        <span class="trending-number">4</span>
-                        <span class="trending-title">Parliament debates Three Waters reform</span>
-                    </div>
-                    <div class="trending-item">
-                        <span class="trending-number">5</span>
-                        <span class="trending-title">Local government funding review announced</span>
-                    </div>
-                </div>
-
-                <!-- Newsletter Signup -->
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">Politics Newsletter</h2>
-                    <p style="font-size: 14px; margin-bottom: 15px;">Get the latest political news and analysis delivered daily.</p>
-                    <form class="subscribe-form" onsubmit="handleSubscribe(event)">
-                        <input type="email" placeholder="Your email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="sidebar-section">
-                    <h2 class="sidebar-title">Resources</h2>
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-dark); text-decoration: none;">📋 Council Meeting Schedule</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-dark); text-decoration: none;">🗳️ Electoral Information</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-dark); text-decoration: none;">📊 Budget Documents</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-dark); text-decoration: none;">📜 Policy Archive</a></li>
+                <div class="sidebar-widget">
+                    <h3>What We'll Cover</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li>📰 Parliament proceedings</li>
+                        <li>🏛️ Local government</li>
+                        <li>📊 Policy analysis</li>
+                        <li>🗳️ Elections & voting</li>
+                        <li>�� Political commentary</li>
                     </ul>
                 </div>
             </aside>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -247,7 +114,6 @@
             </div>
         </div>
     </footer>
-
     <script src="../js/main.js"></script>
 </body>
 </html>

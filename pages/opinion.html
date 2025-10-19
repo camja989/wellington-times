@@ -28,7 +28,7 @@
                 <li><a href="technology.html">Technology</a></li>
                 <li><a href="sports.html">Sports</a></li>
                 <li><a href="culture.html">Culture</a></li>
-                <li><a href="opinion.html">Opinion</a></li>
+                <li><a href="opinion.html" class="active">Opinion</a></li>
                 <li><a href="weather.html">Weather</a></li>
                 <li><a href="games.html">Games</a></li>
             </ul>
@@ -36,125 +36,35 @@
     </header>
 
     <div class="container">
-        <div class="main-content" style="grid-template-columns: 1fr;">
-            <h1 style="font-size: 36px; color: var(--primary-color); margin-bottom: 10px; text-align: center;">Opinion & Analysis</h1>
-            <p style="text-align: center; color: var(--text-light); margin-bottom: 40px;">Perspectives from our columnists and guest contributors</p>
+        <div class="main-content">
+            <div class="main-column">
+                <h1 class="page-title">Opinion</h1>
+                
+                <div style="text-align: center; padding: 80px 20px; background: var(--bg-light); border-radius: 8px; margin: 40px 0;">
+                    <div style="font-size: 80px; margin-bottom: 20px;">💭</div>
+                    <h2 style="margin-bottom: 15px;">Opinion & Analysis Coming Soon</h2>
+                    <p style="color: var(--text-light); font-size: 18px; max-width: 600px; margin: 0 auto 25px;">
+                        We're establishing our opinion section to feature diverse voices, expert analysis, and community perspectives on the issues that matter to Wellington.
+                    </p>
+                    <p style="color: var(--text-light);">
+                        <a href="../pages/contact/letters.html" style="color: var(--accent-color);">Submit a letter</a> • 
+                        <a href="../pages/about/careers.html" style="color: var(--accent-color);">Become a columnist</a>
+                    </p>
+                </div>
+            </div>
             
-            <div class="opinion-grid">
-                <div class="opinion-card">
-                    <div class="author-info">
-                        <div class="author-avatar">JH</div>
-                        <div>
-                            <div class="author-name">James Harrison</div>
-                            <div class="author-title">Political Editor</div>
-                        </div>
-                    </div>
-                    <h3 style="margin-bottom: 10px; color: var(--primary-color);">The Future of Wellington's Transport: Why Light Rail Matters</h3>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        As our city grows, we must embrace modern transport solutions that reduce congestion and emissions while improving connectivity. Light rail isn't just about moving people—it's about shaping the kind of city we want to become. The proposed $6 billion investment represents a once-in-a-generation opportunity to transform Wellington's infrastructure.
-                    </p>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        Critics point to the cost, but fail to account for the long-term economic benefits. Studies from cities around the world show that light rail increases property values, stimulates business development, and reduces the hidden costs of car dependency—traffic accidents, air pollution, and wasted productivity in gridlock.
-                    </p>
-                    <a href="#" class="read-more">Read more →</a>
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>Opinion Features</h3>
+                    <ul style="list-style: none; padding: 0; line-height: 2;">
+                        <li>✍️ Editorial board</li>
+                        <li>💬 Guest columnists</li>
+                        <li>📝 Letters to editor</li>
+                        <li>🔍 Expert analysis</li>
+                        <li>🗣️ Community voices</li>
+                    </ul>
                 </div>
-
-                <div class="opinion-card">
-                    <div class="author-info">
-                        <div class="author-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">MT</div>
-                        <div>
-                            <div class="author-name">Maria Thompson</div>
-                            <div class="author-title">Business Columnist</div>
-                        </div>
-                    </div>
-                    <h3 style="margin-bottom: 10px; color: var(--primary-color);">Wellington's Tech Sector: Poised for Global Success</h3>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        With world-class talent and innovative startups, Wellington is becoming a significant player in the global technology landscape. The recent announcement of the AI Research Center is just the beginning. Our city has all the ingredients for tech success: excellent universities, a supportive startup ecosystem, and a quality of life that attracts top talent.
-                    </p>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        What sets Wellington apart is our focus on ethical innovation and sustainable technology. While other tech hubs chase rapid growth at any cost, we're building companies that solve real problems and create genuine value.
-                    </p>
-                    <a href="#" class="read-more">Read more →</a>
-                </div>
-
-                <div class="opinion-card">
-                    <div class="author-info">
-                        <div class="author-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">RK</div>
-                        <div>
-                            <div class="author-name">Rachel Kim</div>
-                            <div class="author-title">Cultural Critic</div>
-                        </div>
-                    </div>
-                    <h3 style="margin-bottom: 10px; color: var(--primary-color);">Preserving Wellington's Creative Soul in a Digital Age</h3>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        As our city evolves, we must ensure that the arts and creative industries remain at the heart of Wellington's identity. The proposed density changes threaten to price out the artists, musicians, and writers who make our city vibrant. We need policy that actively protects affordable creative spaces.
-                    </p>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        Wellington's reputation as New Zealand's cultural capital wasn't built by accident. It resulted from decades of investment in the arts, support for independent venues, and a community that values creativity. As we build upward, let's not forget to build inward too.
-                    </p>
-                    <a href="#" class="read-more">Read more →</a>
-                </div>
-
-                <div class="opinion-card">
-                    <div class="author-info">
-                        <div class="author-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">DW</div>
-                        <div>
-                            <div class="author-name">Dr. David Wong</div>
-                            <div class="author-title">Environmental Scientist</div>
-                        </div>
-                    </div>
-                    <h3 style="margin-bottom: 10px; color: var(--primary-color);">Climate Action: Wellington Can Lead the Way</h3>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        The recent passage of national climate legislation presents Wellington with an opportunity to become a global leader in urban sustainability. As the capital, we have both the responsibility and the resources to demonstrate what a zero-carbon city looks like in practice.
-                    </p>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        The science is clear: we have less than a decade to make transformative changes. Wellington should commit to ambitious targets—100% renewable energy by 2030, carbon-neutral public transport by 2028, and mandatory green building standards for all new construction.
-                    </p>
-                    <a href="#" class="read-more">Read more →</a>
-                </div>
-
-                <div class="opinion-card">
-                    <div class="author-info">
-                        <div class="author-avatar" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">LP</div>
-                        <div>
-                            <div class="author-name">Lisa Patel</div>
-                            <div class="author-title">Education Reporter</div>
-                        </div>
-                    </div>
-                    <h3 style="margin-bottom: 10px; color: var(--primary-color);">Rethinking Education for the 21st Century</h3>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        The current debate over education reform misses a crucial point: we're preparing students for jobs that don't yet exist. Wellington's schools need the flexibility to experiment with new teaching methods, integrate technology meaningfully, and focus on critical thinking over rote memorization.
-                    </p>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        The most successful education systems worldwide share common traits: they trust teachers as professionals, they embrace failure as part of learning, and they recognize that standardized testing measures only a narrow slice of human capability.
-                    </p>
-                    <a href="#" class="read-more">Read more →</a>
-                </div>
-
-                <div class="opinion-card">
-                    <div class="author-info">
-                        <div class="author-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">TN</div>
-                        <div>
-                            <div class="author-name">Tama Ngata</div>
-                            <div class="author-title">Māori Affairs Commentator</div>
-                        </div>
-                    </div>
-                    <h3 style="margin-bottom: 10px; color: var(--primary-color);">Te Tiriti and the Path Forward</h3>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        True partnership under Te Tiriti o Waitangi requires more than symbolic gestures. Wellington has made progress in Māori representation and cultural recognition, but we must move from consultation to genuine co-governance in areas affecting tangata whenua.
-                    </p>
-                    <p style="font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 15px;">
-                        The recent treaty settlement shows what's possible when all parties engage in good faith. Now we need to apply those lessons to everyday governance—from environmental management to urban planning. This isn't about separatism; it's about honoring our founding document.
-                    </p>
-                    <a href="#" class="read-more">Read more →</a>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 40px; padding: 40px; background: var(--bg-light); border-radius: 8px;">
-                <h2 style="color: var(--primary-color); margin-bottom: 15px;">Have Your Say</h2>
-                <p style="color: var(--text-light); margin-bottom: 20px;">We welcome letters to the editor and guest opinion pieces.<br>Email: opinion@wellingtontimes.co.nz</p>
-                <p style="font-size: 14px; color: var(--text-light);"><em>The views expressed in opinion pieces are those of the authors and do not necessarily reflect the editorial position of The Wellington Times.</em></p>
-            </div>
+            </aside>
         </div>
     </div>
 
@@ -204,7 +114,6 @@
             </div>
         </div>
     </footer>
-
     <script src="../js/main.js"></script>
 </body>
 </html>
