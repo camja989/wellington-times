@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editorial Team - The Wellington Times</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4169973866080216"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .team-member {
+            padding: 25px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        .team-member h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .team-member .role {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .team-member .bio {
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="date" id="currentDate"></div>
+                <div class="weather">
+                    <span>☁</span>
+                    <span id="weather">Wellington: 16°C, Partly Cloudy</span>
+                </div>
+            </div>
+        </div>
+        <div class="logo-section">
+            <a href="../../index.html" class="logo">The Wellington Times</a>
+            <div class="tagline">Truth • Integrity • Community • Since 2025</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../politics.html">Politics</a></li>
+                <li><a href="../business.html">Business</a></li>
+                <li><a href="../technology.html">Technology</a></li>
+                <li><a href="../sports.html">Sports</a></li>
+                <li><a href="../culture.html">Culture</a></li>
+                <li><a href="../opinion.html">Opinion</a></li>
+                <li><a href="../weather.html">Weather</a></li>
+                <li><a href="../games.html">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="main-content" style="grid-template-columns: 1fr;">
+            <article class="article-full" style="max-width: 1000px; margin: 40px auto;">
+                <h1 style="margin-bottom: 20px;">Our Editorial Team</h1>
+                <p style="font-size: 18px; color: var(--text-light); margin-bottom: 40px;">
+                    Meet the journalists, editors, and contributors who bring you The Wellington Times.
+                </p>
+
+                <h2 style="margin: 40px 0 25px 0;">Leadership</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <h3>Sarah Mitchell</h3>
+                        <div class="role">Editor-in-Chief</div>
+                        <div class="bio">
+                            With 15 years of journalism experience, Sarah has covered everything from local council meetings 
+                            to national elections. Previously the Deputy Editor at a major metropolitan daily, she brings a 
+                            commitment to rigorous reporting and ethical journalism. Sarah holds a Master's in Journalism 
+                            from Victoria University of Wellington.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>James Chen</h3>
+                        <div class="role">Managing Editor</div>
+                        <div class="bio">
+                            James oversees daily operations and ensures our newsroom runs smoothly. With a background in 
+                            both print and digital media, he's passionate about innovative storytelling. Before joining 
+                            The Wellington Times, James spent seven years at various New Zealand publications, including 
+                            three years as News Director.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Rachel Thompson</h3>
+                        <div class="role">Deputy Editor</div>
+                        <div class="bio">
+                            Rachel brings expertise in investigative journalism and data reporting. Her work has uncovered 
+                            stories on government spending, environmental issues, and social justice. She's a two-time 
+                            recipient of the Voyager Media Awards and holds a degree in Political Science and Journalism.
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="margin: 40px 0 25px 0;">Section Editors</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <h3>David Park</h3>
+                        <div class="role">Political Editor</div>
+                        <div class="bio">
+                            David has spent a decade in the press gallery covering New Zealand politics. His deep 
+                            understanding of parliamentary processes and relationships with key political figures make 
+                            him one of Wellington's most respected political journalists. He previously worked for RNZ 
+                            and The Dominion Post.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Emma Rodriguez</h3>
+                        <div class="role">Business Editor</div>
+                        <div class="bio">
+                            Emma specializes in economic policy, corporate affairs, and Wellington's startup ecosystem. 
+                            With an MBA and journalism degree, she bridges the gap between business and news reporting. 
+                            Her analysis of the tech sector has been featured in numerous publications.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Tom Williams</h3>
+                        <div class="role">Sports Editor</div>
+                        <div class="bio">
+                            A lifelong Wellingtonian and sports enthusiast, Tom covers everything from the Phoenix to 
+                            local club rugby. His engaging writing style and deep knowledge of Wellington sports make 
+                            him a favorite among readers. He's covered three Rugby World Cups and multiple A-League seasons.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Sophie Anderson</h3>
+                        <div class="role">Culture Editor</div>
+                        <div class="bio">
+                            Sophie brings a passion for Wellington's arts scene, from theater to visual arts to music. 
+                            She has a background in arts criticism and has written for publications across New Zealand 
+                            and Australia. Her reviews are known for their insight and accessibility.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Michael Lee</h3>
+                        <div class="role">Technology Editor</div>
+                        <div class="bio">
+                            Michael covers Wellington's growing tech sector, from Weta Digital to emerging startups. 
+                            With a computer science background and journalism training, he translates complex tech 
+                            stories for general audiences. He's particularly interested in how technology impacts 
+                            society and policy.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Kate Morrison</h3>
+                        <div class="role">Opinion Editor</div>
+                        <div class="bio">
+                            Kate curates our opinion section, ensuring diverse voices and perspectives. She's committed 
+                            to fostering constructive public debate and has a talent for identifying emerging issues 
+                            before they hit the mainstream. Previously, she worked in public policy and advocacy.
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="margin: 40px 0 25px 0;">Reporters & Contributors</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <h3>Alex Turner</h3>
+                        <div class="role">Senior Reporter</div>
+                        <div class="bio">
+                            Alex covers breaking news and investigative stories across Wellington. Known for tenacious 
+                            reporting and getting to the heart of complex issues quickly.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Maya Patel</h3>
+                        <div class="role">Community Reporter</div>
+                        <div class="bio">
+                            Maya focuses on stories from Wellington's diverse communities, ensuring voices from across 
+                            the city are heard. She speaks three languages and has deep connections throughout the region.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Chris Bailey</h3>
+                        <div class="role">Environment Reporter</div>
+                        <div class="bio">
+                            Chris specializes in environmental and climate issues, from local conservation efforts to 
+                            regional climate policy. He has a background in environmental science and journalism.
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <h3>Lisa Zhang</h3>
+                        <div class="role">Visual Journalist</div>
+                        <div class="bio">
+                            Lisa combines photography, videography, and data visualization to tell compelling visual 
+                            stories. Her multimedia work has won multiple awards for innovation in journalism.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 50px; padding: 30px; background: var(--bg-light); border-radius: 8px; text-align: center;">
+                    <h3 style="margin-bottom: 15px;">Join Our Team</h3>
+                    <p style="margin-bottom: 20px; color: var(--text-dark);">
+                        We're always looking for talented journalists, editors, and contributors who share our values.
+                    </p>
+                    <a href="careers.html" class="btn" style="background: var(--accent-color); color: white; padding: 12px 30px; text-decoration: none; border-radius: 4px; display: inline-block;">View Open Positions</a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="our-story.html">Our Story</a></li>
+                        <li><a href="mission-values.html">Mission & Values</a></li>
+                        <li><a href="editorial-team.html">Editorial Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Sections</h3>
+                    <ul>
+                        <li><a href="../politics.html">Politics</a></li>
+                        <li><a href="../business.html">Business</a></li>
+                        <li><a href="../technology.html">Technology</a></li>
+                        <li><a href="../sports.html">Sports</a></li>
+                        <li><a href="../culture.html">Culture</a></li>
+                        <li><a href="../games.html">Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="../services/subscribe.html">Subscribe</a></li>
+                        <li><a href="../services/newsletters.html">Newsletters</a></li>
+                        <li><a href="../services/mobile-app.html">Mobile App</a></li>
+                        <li><a href="../services/rss-feeds.html">RSS Feeds</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="../contact/contact-us.html">Contact Us</a></li>
+                        <li><a href="../contact/advertise.html">Advertise</a></li>
+                        <li><a href="../contact/news-tips.html">Send News Tips</a></li>
+                        <li><a href="../contact/letters.html">Letters to Editor</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Wellington Times. All rights reserved. | <a href="../legal/privacy-policy.html" style="color: inherit;">Privacy Policy</a> | <a href="../legal/terms-of-service.html" style="color: inherit;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
