@@ -404,7 +404,7 @@
         let aliens = [];
         const alienRows = 4;
         const alienCols = 8;
-        let alienSpeed = 1;
+        let alienSpeed = 0.5; // Start slower for easier first level
         let alienDirection = 1;
         let alienBullets = [];
         
@@ -508,7 +508,14 @@
         
         function alienShoot() {
             const aliveAliens = aliens.filter(a => a.alive);
-            if (aliveAliens.length > 0 && Math.random() < 0.02) {
+            // Difficulty scales with level: easier in early levels
+            let shootChance = 0.005; // Very low base chance
+            if (level === 1) shootChance = 0.003; // Level 1: Very easy
+            else if (level === 2) shootChance = 0.005; // Level 2: Easy
+            else if (level === 3) shootChance = 0.008; // Level 3: Moderate
+            else if (level >= 4) shootChance = 0.012 + (level - 4) * 0.002; // Level 4+: Progressive
+            
+            if (aliveAliens.length > 0 && Math.random() < shootChance) {
                 const alien = aliveAliens[Math.floor(Math.random() * aliveAliens.length)];
                 alienBullets.push({
                     x: alien.x + alien.width / 2 - 2,
@@ -531,9 +538,15 @@
             bullets = bullets.filter(b => b.y > 0);
             bullets.forEach(b => b.y -= bulletSpeed);
             
-            // Update alien bullets
+            // Update alien bullets with level-based speed
             alienBullets = alienBullets.filter(b => b.y < canvas.height);
-            alienBullets.forEach(b => b.y += bulletSpeed - 2);
+            let alienBulletSpeed = 3; // Base speed
+            if (level === 1) alienBulletSpeed = 2; // Level 1: Slower
+            else if (level === 2) alienBulletSpeed = 2.5; // Level 2: Slow
+            else if (level === 3) alienBulletSpeed = 3; // Level 3: Normal
+            else if (level >= 4) alienBulletSpeed = 3.5 + (level - 4) * 0.3; // Level 4+: Faster
+            
+            alienBullets.forEach(b => b.y += alienBulletSpeed);
             
             // Update aliens
             let hitEdge = false;
@@ -586,7 +599,11 @@
             // Check if all aliens dead
             if (aliens.every(a => !a.alive)) {
                 level++;
-                alienSpeed += 0.5;
+                // Progressive speed increase: slower increments in early levels
+                if (level === 2) alienSpeed = 0.7; // Level 2
+                else if (level === 3) alienSpeed = 1.0; // Level 3
+                else if (level === 4) alienSpeed = 1.3; // Level 4
+                else alienSpeed += 0.4; // Level 5+: bigger jumps
                 createAliens();
                 updateStats();
             }
@@ -732,7 +749,7 @@
             score = 0;
             lives = 3;
             level = 1;
-            alienSpeed = 1;
+            alienSpeed = 0.5; // Reset to easier starting speed
             alienDirection = 1;
             bullets = [];
             alienBullets = [];
