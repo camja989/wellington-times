@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders - The Wellington Times</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4169973866080216"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .game-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .game-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .game-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .game-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        #gameCanvas {
+            display: block;
+            margin: 0 auto;
+            background: #000;
+            border: 3px solid var(--accent-color);
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+            touch-action: none;
+        }
+        .controls-info {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 8px;
+        }
+        .controls-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .controls-section {
+            display: inline-block;
+            margin: 0 20px;
+            text-align: left;
+        }
+        .mobile-controls {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+        .mobile-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .mobile-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            border: 3px solid var(--accent-color);
+            background: white;
+            font-size: 32px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-color);
+            user-select: none;
+        }
+        .mobile-btn:active {
+            transform: scale(0.95);
+            background: var(--accent-color);
+            color: white;
+        }
+        .fire-btn {
+            background: #f44336;
+            color: white;
+            border-color: #d32f2f;
+        }
+        .fire-btn:active {
+            background: #d32f2f;
+        }
+        .game-over-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .game-over-screen.show {
+            display: flex;
+        }
+        .game-over-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        .game-over-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+        .final-score {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+        .name-input-section {
+            margin: 25px 0;
+        }
+        .name-input-section input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid var(--bg-light);
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        .submit-score-btn, .restart-btn {
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        .submit-score-btn {
+            background: var(--accent-color);
+            color: white;
+        }
+        .submit-score-btn:hover {
+            background: var(--primary-color);
+            transform: scale(1.05);
+        }
+        .restart-btn {
+            background: #6c757d;
+            color: white;
+        }
+        .restart-btn:hover {
+            background: #5a6268;
+            transform: scale(1.05);
+        }
+        .leaderboard {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--bg-light);
+            border-radius: 12px;
+        }
+        .leaderboard h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .leaderboard-table th {
+            background: var(--accent-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        .leaderboard-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        .leaderboard-table tr:hover {
+            background: white;
+        }
+        .rank-medal {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+        .no-scores {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 15px;
+                margin: 20px 10px;
+            }
+            .controls-section {
+                display: block;
+                margin: 10px 0;
+            }
+            .mobile-controls {
+                display: block;
+            }
+            .game-over-content {
+                padding: 25px;
+            }
+            .final-score {
+                font-size: 36px;
+            }
+            .leaderboard {
+                padding: 15px;
+                overflow-x: auto;
+            }
+            .leaderboard-table {
+                font-size: 14px;
+            }
+            .leaderboard-table th,
+            .leaderboard-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="date" id="currentDate"></div>
+                <div class="weather"><span>☁</span><span id="weather">Wellington: 16°C, Partly Cloudy</span></div>
+            </div>
+        </div>
+        <div class="logo-section">
+            <a href="../index.html" class="logo">The Wellington Times</a>
+            <div class="tagline">Truth • Integrity • Community • Since 2025</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/politics.html">Politics</a></li>
+                <li><a href="../pages/business.html">Business</a></li>
+                <li><a href="../pages/technology.html">Technology</a></li>
+                <li><a href="../pages/sports.html">Sports</a></li>
+                <li><a href="../pages/culture.html">Culture</a></li>
+                <li><a href="../pages/opinion.html">Opinion</a></li>
+                <li><a href="../pages/weather.html">Weather</a></li>
+                <li><a href="../pages/games.html" class="active">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="game-container">
+            <div class="game-header">
+                <h1>🚀 Space Invaders</h1>
+                <p style="color: var(--text-light);">Defend Earth from the alien invasion!</p>
+            </div>
+            
+            <div class="game-stats">
+                <div class="stat-item">
+                    <div class="stat-label">Score</div>
+                    <div class="stat-value" id="scoreDisplay">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Lives</div>
+                    <div class="stat-value" id="livesDisplay">3</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Level</div>
+                    <div class="stat-value" id="levelDisplay">1</div>
+                </div>
+            </div>
+            
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            
+            <div class="controls-info">
+                <h3>Controls</h3>
+                <div class="controls-section">
+                    <strong>Desktop:</strong> Arrow Keys to Move, Space to Fire
+                </div>
+                <div class="controls-section">
+                    <strong>Mobile:</strong> Use buttons below
+                </div>
+            </div>
+            
+            <div class="mobile-controls" id="mobileControls">
+                <div class="mobile-buttons">
+                    <button class="mobile-btn" id="leftBtn">◄</button>
+                    <button class="mobile-btn fire-btn" id="fireBtn">🔥</button>
+                    <button class="mobile-btn" id="rightBtn">►</button>
+                </div>
+            </div>
+            
+            <div class="leaderboard">
+                <h2>🏆 Leaderboard - Top 10</h2>
+                <table class="leaderboard-table" id="leaderboardTable">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Score</th>
+                            <th>Level</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <tr><td colspan="5" class="no-scores">No scores yet. Be the first!</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="game-over-screen" id="gameOverScreen">
+        <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <div class="final-score" id="finalScore">0</div>
+            <p style="font-size: 18px; color: var(--text-light); margin-bottom: 20px;">
+                Level <span id="finalLevel">1</span> reached
+            </p>
+            <div class="name-input-section">
+                <label for="playerName" style="display: block; margin-bottom: 10px; font-weight: bold;">Enter Your Name:</label>
+                <input type="text" id="playerName" placeholder="Your Name" maxlength="20">
+                <button class="submit-score-btn" onclick="submitScore()">Submit Score</button>
+            </div>
+            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section"><h3>About Us</h3><ul><li><a href="../pages/about/our-story.html">Our Story</a></li><li><a href="../pages/about/mission-values.html">Mission & Values</a></li><li><a href="../pages/about/editorial-team.html">Editorial Team</a></li><li><a href="../pages/about/careers.html">Careers</a></li></ul></div>
+                <div class="footer-section"><h3>Sections</h3><ul><li><a href="../pages/politics.html">Politics</a></li><li><a href="../pages/business.html">Business</a></li><li><a href="../pages/technology.html">Technology</a></li><li><a href="../pages/sports.html">Sports</a></li><li><a href="../pages/culture.html">Culture</a></li></ul></div>
+                <div class="footer-section"><h3>Services</h3><ul><li><a href="../pages/services/subscribe.html">Subscribe</a></li><li><a href="../pages/services/newsletters.html">Newsletters</a></li><li><a href="../pages/services/mobile-app.html">Mobile App</a></li><li><a href="../pages/services/rss-feeds.html">RSS Feeds</a></li></ul></div>
+                <div class="footer-section"><h3>Contact</h3><ul><li><a href="../pages/contact/contact-us.html">Contact Us</a></li><li><a href="../pages/contact/advertise.html">Advertise</a></li><li><a href="../pages/contact/news-tips.html">Send News Tips</a></li><li><a href="../pages/contact/letters.html">Letters to Editor</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 The Wellington Times. All rights reserved. | <a href="../pages/legal/privacy-policy.html" style="color: inherit;">Privacy Policy</a> | <a href="../pages/legal/terms-of-service.html" style="color: inherit;">Terms of Service</a></p></div>
+        </div>
+    </footer>
+    
+    <script src="../js/main.js"></script>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Game variables
+        let score = 0;
+        let lives = 3;
+        let level = 1;
+        let gameRunning = true;
+        let animationId;
+        
+        // Player
+        const player = {
+            x: canvas.width / 2 - 25,
+            y: canvas.height - 80,
+            width: 50,
+            height: 30,
+            speed: 5,
+            dx: 0
+        };
+        
+        // Bullets
+        let bullets = [];
+        const bulletSpeed = 7;
+        let canShoot = true;
+        
+        // Aliens
+        let aliens = [];
+        const alienRows = 4;
+        const alienCols = 8;
+        let alienSpeed = 1;
+        let alienDirection = 1;
+        let alienBullets = [];
+        
+        // Mobile controls
+        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Initialize game
+        function init() {
+            createAliens();
+            if (isMobile) {
+                document.getElementById('mobileControls').style.display = 'block';
+                setupMobileControls();
+            }
+            setupKeyboardControls();
+            loadLeaderboard();
+            gameLoop();
+        }
+        
+        function createAliens() {
+            aliens = [];
+            const startX = 50;
+            const startY = 50;
+            const spacing = 80;
+            
+            for (let row = 0; row < alienRows; row++) {
+                for (let col = 0; col < alienCols; col++) {
+                    aliens.push({
+                        x: startX + col * spacing,
+                        y: startY + row * 60,
+                        width: 50,
+                        height: 40,
+                        alive: true,
+                        type: row % 3
+                    });
+                }
+            }
+        }
+        
+        function setupKeyboardControls() {
+            document.addEventListener('keydown', (e) => {
+                if (!gameRunning) return;
+                
+                if (e.key === 'ArrowLeft') {
+                    player.dx = -player.speed;
+                } else if (e.key === 'ArrowRight') {
+                    player.dx = player.speed;
+                } else if (e.key === ' ' && canShoot) {
+                    shoot();
+                    e.preventDefault();
+                }
+            });
+            
+            document.addEventListener('keyup', (e) => {
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    player.dx = 0;
+                }
+            });
+        }
+        
+        function setupMobileControls() {
+            const leftBtn = document.getElementById('leftBtn');
+            const rightBtn = document.getElementById('rightBtn');
+            const fireBtn = document.getElementById('fireBtn');
+            
+            leftBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                player.dx = -player.speed;
+            });
+            
+            leftBtn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                player.dx = 0;
+            });
+            
+            rightBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                player.dx = player.speed;
+            });
+            
+            rightBtn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                player.dx = 0;
+            });
+            
+            fireBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (canShoot) shoot();
+            });
+        }
+        
+        function shoot() {
+            bullets.push({
+                x: player.x + player.width / 2 - 2,
+                y: player.y,
+                width: 4,
+                height: 10
+            });
+            canShoot = false;
+            setTimeout(() => canShoot = true, 300);
+        }
+        
+        function alienShoot() {
+            const aliveAliens = aliens.filter(a => a.alive);
+            if (aliveAliens.length > 0 && Math.random() < 0.02) {
+                const alien = aliveAliens[Math.floor(Math.random() * aliveAliens.length)];
+                alienBullets.push({
+                    x: alien.x + alien.width / 2 - 2,
+                    y: alien.y + alien.height,
+                    width: 4,
+                    height: 10
+                });
+            }
+        }
+        
+        function update() {
+            if (!gameRunning) return;
+            
+            // Update player
+            player.x += player.dx;
+            if (player.x < 0) player.x = 0;
+            if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+            
+            // Update bullets
+            bullets = bullets.filter(b => b.y > 0);
+            bullets.forEach(b => b.y -= bulletSpeed);
+            
+            // Update alien bullets
+            alienBullets = alienBullets.filter(b => b.y < canvas.height);
+            alienBullets.forEach(b => b.y += bulletSpeed - 2);
+            
+            // Update aliens
+            let hitEdge = false;
+            aliens.forEach(alien => {
+                if (!alien.alive) return;
+                alien.x += alienSpeed * alienDirection;
+                if (alien.x <= 0 || alien.x + alien.width >= canvas.width) {
+                    hitEdge = true;
+                }
+            });
+            
+            if (hitEdge) {
+                alienDirection *= -1;
+                aliens.forEach(alien => {
+                    if (alien.alive) alien.y += 20;
+                });
+            }
+            
+            // Collision detection - player bullets vs aliens
+            bullets.forEach((bullet, bIndex) => {
+                aliens.forEach((alien, aIndex) => {
+                    if (alien.alive &&
+                        bullet.x < alien.x + alien.width &&
+                        bullet.x + bullet.width > alien.x &&
+                        bullet.y < alien.y + alien.height &&
+                        bullet.y + bullet.height > alien.y) {
+                        alien.alive = false;
+                        bullets.splice(bIndex, 1);
+                        score += (10 * (alien.type + 1)) * level;
+                        updateStats();
+                    }
+                });
+            });
+            
+            // Collision detection - alien bullets vs player
+            alienBullets.forEach((bullet, index) => {
+                if (bullet.x < player.x + player.width &&
+                    bullet.x + bullet.width > player.x &&
+                    bullet.y < player.y + player.height &&
+                    bullet.y + bullet.height > player.y) {
+                    alienBullets.splice(index, 1);
+                    lives--;
+                    updateStats();
+                    if (lives <= 0) {
+                        gameOver();
+                    }
+                }
+            });
+            
+            // Check if all aliens dead
+            if (aliens.every(a => !a.alive)) {
+                level++;
+                alienSpeed += 0.5;
+                createAliens();
+                updateStats();
+            }
+            
+            // Check if aliens reached bottom
+            if (aliens.some(a => a.alive && a.y + a.height >= player.y)) {
+                gameOver();
+            }
+            
+            alienShoot();
+        }
+        
+        function draw() {
+            // Clear canvas
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw stars
+            ctx.fillStyle = '#fff';
+            for (let i = 0; i < 50; i++) {
+                const x = (i * 123) % canvas.width;
+                const y = (i * 456) % canvas.height;
+                ctx.fillRect(x, y, 2, 2);
+            }
+            
+            // Draw player
+            ctx.fillStyle = '#00ff00';
+            ctx.beginPath();
+            ctx.moveTo(player.x + player.width / 2, player.y);
+            ctx.lineTo(player.x, player.y + player.height);
+            ctx.lineTo(player.x + player.width, player.y + player.height);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Draw bullets
+            ctx.fillStyle = '#ffff00';
+            bullets.forEach(b => {
+                ctx.fillRect(b.x, b.y, b.width, b.height);
+            });
+            
+            // Draw alien bullets
+            ctx.fillStyle = '#ff0000';
+            alienBullets.forEach(b => {
+                ctx.fillRect(b.x, b.y, b.width, b.height);
+            });
+            
+            // Draw aliens
+            aliens.forEach(alien => {
+                if (!alien.alive) return;
+                
+                if (alien.type === 0) ctx.fillStyle = '#ff00ff';
+                else if (alien.type === 1) ctx.fillStyle = '#00ffff';
+                else ctx.fillStyle = '#ffff00';
+                
+                // Simple alien shape
+                ctx.fillRect(alien.x + 10, alien.y, 30, 10);
+                ctx.fillRect(alien.x, alien.y + 10, 50, 20);
+                ctx.fillRect(alien.x + 5, alien.y + 30, 10, 10);
+                ctx.fillRect(alien.x + 35, alien.y + 30, 10, 10);
+            });
+        }
+        
+        function updateStats() {
+            document.getElementById('scoreDisplay').textContent = score;
+            document.getElementById('livesDisplay').textContent = lives;
+            document.getElementById('levelDisplay').textContent = level;
+        }
+        
+        function gameLoop() {
+            update();
+            draw();
+            animationId = requestAnimationFrame(gameLoop);
+        }
+        
+        function gameOver() {
+            gameRunning = false;
+            cancelAnimationFrame(animationId);
+            document.getElementById('finalScore').textContent = score;
+            document.getElementById('finalLevel').textContent = level;
+            document.getElementById('gameOverScreen').classList.add('show');
+        }
+        
+        function submitScore() {
+            const playerName = document.getElementById('playerName').value.trim();
+            if (!playerName) {
+                alert('Please enter your name!');
+                return;
+            }
+            
+            const scoreData = {
+                name: playerName,
+                score: score,
+                level: level,
+                date: new Date().toLocaleDateString()
+            };
+            
+            // Get existing scores from localStorage
+            let leaderboard = JSON.parse(localStorage.getItem('spaceInvadersLeaderboard') || '[]');
+            leaderboard.push(scoreData);
+            
+            // Sort by score (descending) and keep top 10
+            leaderboard.sort((a, b) => b.score - a.score);
+            leaderboard = leaderboard.slice(0, 10);
+            
+            // Save to localStorage
+            localStorage.setItem('spaceInvadersLeaderboard', JSON.stringify(leaderboard));
+            
+            // Reload leaderboard and close modal
+            loadLeaderboard();
+            document.getElementById('gameOverScreen').classList.remove('show');
+            document.getElementById('playerName').value = '';
+        }
+        
+        function loadLeaderboard() {
+            const leaderboard = JSON.parse(localStorage.getItem('spaceInvadersLeaderboard') || '[]');
+            const tbody = document.getElementById('leaderboardBody');
+            
+            if (leaderboard.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="no-scores">No scores yet. Be the first!</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = leaderboard.map((entry, index) => {
+                let medal = '';
+                if (index === 0) medal = '🥇';
+                else if (index === 1) medal = '🥈';
+                else if (index === 2) medal = '🥉';
+                
+                return `
+                    <tr>
+                        <td><span class="rank-medal">${medal}</span>${index + 1}</td>
+                        <td>${entry.name}</td>
+                        <td>${entry.score}</td>
+                        <td>${entry.level}</td>
+                        <td>${entry.date}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function restartGame() {
+            // Reset game state
+            score = 0;
+            lives = 3;
+            level = 1;
+            alienSpeed = 1;
+            alienDirection = 1;
+            bullets = [];
+            alienBullets = [];
+            player.x = canvas.width / 2 - 25;
+            player.dx = 0;
+            gameRunning = true;
+            
+            // Reset display
+            updateStats();
+            createAliens();
+            document.getElementById('gameOverScreen').classList.remove('show');
+            document.getElementById('playerName').value = '';
+            
+            // Restart game loop
+            gameLoop();
+        }
+        
+        // Start game on load
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
