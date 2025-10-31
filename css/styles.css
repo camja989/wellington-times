@@ -588,20 +588,28 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
     .main-content {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .article-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .opinion-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
     .logo {
@@ -612,8 +620,17 @@ footer {
         padding: 10px 0;
     }
     
+    .tagline {
+        font-size: 12px;
+    }
+    
     header {
         position: relative;
+    }
+
+    .header-top {
+        padding: 8px 0;
+        font-size: 11px;
     }
 
     nav {
@@ -626,6 +643,7 @@ footer {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         flex-wrap: nowrap;
+        padding: 0;
     }
     
     nav li {
@@ -640,5 +658,106 @@ footer {
 
     .sidebar {
         position: static;
+    }
+
+    .featured-article {
+        padding: 20px;
+    }
+
+    .featured-article h1 {
+        font-size: 24px;
+    }
+
+    .article-card {
+        margin-bottom: 15px;
+    }
+
+    .article-card-title {
+        font-size: 18px;
+    }
+
+    .breaking-news {
+        padding: 10px 0;
+    }
+
+    .breaking-text {
+        font-size: 13px;
+    }
+
+    .article-title {
+        font-size: 28px !important;
+    }
+
+    .article-subtitle {
+        font-size: 18px !important;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    /* Make images responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Improve table responsiveness */
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Better form elements on mobile */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 24px;
+    }
+
+    .logo-section {
+        padding: 8px 0;
+    }
+
+    .tagline {
+        font-size: 10px;
+    }
+
+    nav a {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .featured-article h1 {
+        font-size: 20px;
+    }
+
+    .article-card-title {
+        font-size: 16px;
+    }
+
+    .article-title {
+        font-size: 24px !important;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
     }
 }

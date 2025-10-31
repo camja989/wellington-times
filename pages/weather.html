@@ -12,39 +12,39 @@
         .weather-hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 40px 20px;
             border-radius: 8px;
             text-align: center;
             margin-bottom: 30px;
         }
         
         .current-temp {
-            font-size: 80px;
+            font-size: 60px;
             font-weight: bold;
             margin: 20px 0;
         }
         
         .weather-icon-large {
-            font-size: 100px;
+            font-size: 80px;
         }
         
         .weather-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
             margin-top: 30px;
         }
         
         .weather-detail-item {
             background: rgba(255,255,255,0.2);
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
         }
         
         .forecast-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
             margin: 30px 0;
         }
         
@@ -60,6 +60,7 @@
             font-weight: bold;
             color: var(--primary-color);
             margin-bottom: 10px;
+            font-size: 14px;
         }
         
         .forecast-icon {
@@ -68,7 +69,7 @@
         }
         
         .forecast-temp {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: var(--accent-color);
         }
@@ -76,17 +77,100 @@
         .hourly-forecast {
             display: flex;
             overflow-x: auto;
-            gap: 15px;
+            gap: 12px;
             padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
         }
         
         .hourly-item {
-            flex: 0 0 100px;
+            flex: 0 0 90px;
             background: white;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .additional-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .current-temp {
+                font-size: 50px;
+            }
+            
+            .weather-icon-large {
+                font-size: 60px;
+            }
+            
+            .weather-hero {
+                padding: 30px 15px;
+            }
+            
+            .weather-details {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .weather-detail-item {
+                padding: 12px;
+            }
+            
+            .forecast-grid {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 10px;
+            }
+            
+            .forecast-card {
+                padding: 15px 10px;
+            }
+            
+            .forecast-icon {
+                font-size: 36px;
+            }
+            
+            .forecast-temp {
+                font-size: 16px;
+            }
+            
+            .hourly-item {
+                flex: 0 0 75px;
+                padding: 10px 8px;
+            }
+            
+            .additional-info-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            h1 {
+                font-size: 28px !important;
+            }
+            
+            h2 {
+                font-size: 20px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .current-temp {
+                font-size: 40px;
+            }
+            
+            .weather-icon-large {
+                font-size: 50px;
+            }
+            
+            .weather-hero h2 {
+                font-size: 18px;
+            }
+            
+            .weather-hero p {
+                font-size: 14px !important;
+            }
         }
     </style>
 </head>
@@ -175,7 +259,7 @@
             </div>
 
             <!-- Additional Info -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div class="additional-info-grid">
                 <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
                     <h3 style="color: var(--primary-color); margin-bottom: 15px;">🌅 Sun & Moon</h3>
                     <p style="margin-bottom: 10px;"><strong>Sunrise:</strong> 6:32 AM</p>
