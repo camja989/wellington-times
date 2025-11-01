@@ -1,11 +1,25 @@
 # Netlify Configuration File
+# Redirects old domain (wgtnews.live) to new domain (wellingtontimes.co.nz)
 
-# Redirect www to non-www (only when domain is set up)
-# [[redirects]]
-#     from = "https://www.wellingtontimes.co.nz/*"
-#     to = "https://wellingtontimes.co.nz/:splat"
-#     status = 301
-#     force = true
+# Redirect from wgtnews.live to wellingtontimes.co.nz
+[[redirects]]
+  from = "https://wgtnews.live/*"
+  to = "https://wellingtontimes.co.nz/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.wgtnews.live/*"
+  to = "https://wellingtontimes.co.nz/:splat"
+  status = 301
+  force = true
+
+# Redirect www to non-www for new domain
+[[redirects]]
+  from = "https://www.wellingtontimes.co.nz/*"
+  to = "https://wellingtontimes.co.nz/:splat"
+  status = 301
+  force = true
 
 # Build settings
 [build]
