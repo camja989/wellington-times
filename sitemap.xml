@@ -4,14 +4,14 @@
     
     <!-- Homepage - Highest Priority -->
     <url>
-        <loc>https://wgtnews.live/</loc>
+        <loc>https://wellingtontimes.co.nz/</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/index.html</loc>
+        <loc>https://wellingtontimes.co.nz/index.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -19,42 +19,42 @@
     
     <!-- Main Section Pages -->
     <url>
-        <loc>https://wgtnews.live/pages/politics.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/politics.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/pages/business.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/business.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/pages/technology.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/technology.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/pages/sports.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/sports.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/pages/culture.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/culture.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/pages/opinion.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/opinion.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
@@ -62,77 +62,77 @@
     
     <!-- Recent Articles -->
     <url>
-        <loc>https://wgtnews.live/articles/medical-student-grant-crisis.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/medical-student-grant-crisis.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/labour-capital-gains-tax-wellington.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/labour-capital-gains-tax-wellington.html</loc>
         <lastmod>2025-10-29</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/beyond-meat-meme-stock-surge.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/beyond-meat-meme-stock-surge.html</loc>
         <lastmod>2025-10-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/ai-agents-digital-workforce.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/ai-agents-digital-workforce.html</loc>
         <lastmod>2025-10-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/wellington-phoenix-perth-glory-draw.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/wellington-phoenix-perth-glory-draw.html</loc>
         <lastmod>2025-10-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/psychopathic-traits-careers-nz.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/psychopathic-traits-careers-nz.html</loc>
         <lastmod>2025-10-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/free-tertiary-education-opinion.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/free-tertiary-education-opinion.html</loc>
         <lastmod>2025-10-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/nz-nuclear-power-opinion.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/nz-nuclear-power-opinion.html</loc>
         <lastmod>2025-10-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/trump-russia-oil-sanctions.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/trump-russia-oil-sanctions.html</loc>
         <lastmod>2025-10-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/luxon-economy-reality-check.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/luxon-economy-reality-check.html</loc>
         <lastmod>2025-10-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/articles/workers-strike-100000-strong.html</loc>
+        <loc>https://wellingtontimes.co.nz/articles/workers-strike-100000-strong.html</loc>
         <lastmod>2025-10-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -140,21 +140,21 @@
     
     <!-- About Pages -->
     <url>
-        <loc>https://wgtnews.live/pages/about/our-story.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/about/our-story.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/pages/about/mission-values.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/about/mission-values.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     
     <url>
-        <loc>https://wgtnews.live/pages/contact/contact-us.html</loc>
+        <loc>https://wellingtontimes.co.nz/pages/contact/contact-us.html</loc>
         <lastmod>2025-11-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>

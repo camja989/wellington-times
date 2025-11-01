@@ -1,4 +1,4 @@
-# .htaccess for The Wellington Times (wgtnews.live)
+# .htaccess for The Wellington Times (wellingtontimes.co.nz)
 # SEO Optimization & Performance
 
 # Enable compression
@@ -28,11 +28,11 @@
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
-# Redirect www to non-www (if applicable)
+# Redirect www to non-www
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteCond %{HTTP_HOST} ^www\.wgtnews\.live [NC]
-    RewriteRule ^(.*)$ https://wgtnews.live/$1 [L,R=301]
+    RewriteCond %{HTTP_HOST} ^www\.wellingtontimes\.co\.nz [NC]
+    RewriteRule ^(.*)$ https://wellingtontimes.co.nz/$1 [L,R=301]
 </IfModule>
 
 # Set default character set

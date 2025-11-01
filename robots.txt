@@ -1,4 +1,4 @@
-# robots.txt for The Wellington Times (wgtnews.live)
+# robots.txt for The Wellington Times (wellingtontimes.co.nz)
 # Optimized for New Zealand search engines
 
 User-agent: *
@@ -13,4 +13,4 @@ Allow: /pages/
 Disallow: /pages/legal/
 
 # Sitemap location
-Sitemap: https://wgtnews.live/sitemap.xml
+Sitemap: https://wellingtontimes.co.nz/sitemap.xml

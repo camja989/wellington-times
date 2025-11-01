@@ -1,0 +1,9 @@
+# .htaccess for wgtnews.live (OLD DOMAIN)
+# Redirect ALL traffic to wellingtontimes.co.nz permanently (301)
+
+RewriteEngine On
+
+# Redirect all traffic from wgtnews.live to wellingtontimes.co.nz
+RewriteCond %{HTTP_HOST} ^wgtnews\.live$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www\.wgtnews\.live$ [NC]
+RewriteRule ^(.*)$ https://wellingtontimes.co.nz/$1 [R=301,L]
