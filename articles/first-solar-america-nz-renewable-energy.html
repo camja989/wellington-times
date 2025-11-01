@@ -118,7 +118,15 @@
                 <p class="lead">As New Zealand accelerates toward its ambitious goal of 95 percent renewable electricity by 2030, investors and policymakers are closely watching global solar leaders for insights into the industry's trajectory. First Solar, Inc. (NASDAQ: FSLR), America's only utility-scale photovoltaic manufacturer, has emerged as a compelling case study in solar sector success, delivering impressive third-quarter results that have sent its stock soaring more than 13 percent in recent trading.</p>
                 
                 <div class="stock-tracker-container">
-                    <div id="stock-tracker-root"></div>
+                    <!-- TradingView Widget -->
+                    <div class="tradingview-widget-container" style="height:400px">
+                        <div id="tradingview_widget" style="height:calc(100% - 32px)"></div>
+                        <div class="tradingview-widget-copyright">
+                            <a href="https://www.tradingview.com/symbols/NASDAQ-FSLR/" rel="noopener" target="_blank">
+                                <span style="color: rgba(255,255,255,0.5); font-size: 13px;">FSLR stock chart by TradingView</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
                 <h2>Stellar Performance in a Challenging Market</h2>
@@ -269,275 +277,29 @@
 
     <script src="../js/main.js"></script>
     
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-        
-        function StockTracker() {
-            const [stockData, setStockData] = useState({
-                price: null,
-                change: null,
-                changePercent: null,
-                high: null,
-                low: null,
-                open: null,
-                previousClose: null,
-                volume: null,
-                lastUpdate: null,
-                loading: true,
-                error: null
-            });
-            
-            const [isMarketOpen, setIsMarketOpen] = useState(false);
-            
-            const checkIfMarketOpen = () => {
-                const now = new Date();
-                const utcHours = now.getUTCHours();
-                const utcMinutes = now.getUTCMinutes();
-                const utcDay = now.getUTCDay();
-                
-                // NASDAQ: 9:30 AM - 4:00 PM ET = 14:30 - 21:00 UTC (EST) or 13:30 - 20:00 UTC (EDT)
-                const isWeekday = utcDay >= 1 && utcDay <= 5;
-                const totalMinutes = utcHours * 60 + utcMinutes;
-                // Approximate market hours (accounting for daylight saving variations)
-                const isDuringMarketHours = totalMinutes >= 810 && totalMinutes < 1260; // 13:30 - 21:00 UTC
-                
-                return isWeekday && isDuringMarketHours;
-            };
-            
-            const fetchStockData = async () => {
-                try {
-                    const symbol = 'FSLR';
-                    
-                    // Try Yahoo Finance API with simpler endpoint
-                    const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${symbol}`;
-                    const response = await fetch(url);
-                    
-                    if (!response.ok) {
-                        throw new Error('API request failed');
-                    }
-                    
-                    const data = await response.json();
-                    
-                    if (!data.quoteResponse || !data.quoteResponse.result || data.quoteResponse.result.length === 0) {
-                        throw new Error('No data returned');
-                    }
-                    
-                    const quote = data.quoteResponse.result[0];
-                    
-                    const marketOpen = checkIfMarketOpen();
-                    setIsMarketOpen(marketOpen);
-                    
-                    // Extract data from quote
-                    const currentPrice = quote.regularMarketPrice || quote.postMarketPrice || quote.previousClose;
-                    const previousClose = quote.regularMarketPreviousClose || quote.previousClose;
-                    const change = quote.regularMarketChange || (currentPrice - previousClose);
-                    const changePercent = quote.regularMarketChangePercent || ((change / previousClose) * 100);
-                    
-                    setStockData({
-                        price: currentPrice,
-                        change: change,
-                        changePercent: changePercent,
-                        high: quote.regularMarketDayHigh || quote.fiftyTwoWeekHigh,
-                        low: quote.regularMarketDayLow || quote.fiftyTwoWeekLow,
-                        open: quote.regularMarketOpen || previousClose,
-                        previousClose: previousClose,
-                        volume: quote.regularMarketVolume || quote.averageDailyVolume10Day,
-                        lastUpdate: new Date(),
-                        loading: false,
-                        error: null
-                    });
-                    
-                } catch (error) {
-                    console.error('Error fetching stock data:', error);
-                    
-                    // Fallback to static data display
-                    setStockData({
-                        price: 214.50, // Approximate recent price
-                        change: 5.25,
-                        changePercent: 2.51,
-                        high: 216.80,
-                        low: 210.30,
-                        open: 211.00,
-                        previousClose: 209.25,
-                        volume: 2450000,
-                        lastUpdate: new Date(),
-                        loading: false,
-                        error: 'Showing approximate data - Live updates temporarily unavailable'
-                    });
-                    setIsMarketOpen(false);
-                }
-            };
-            
-            useEffect(() => {
-                // Fetch immediately
-                fetchStockData();
-                
-                // If market is open, update every 60 seconds
-                // If market is closed, update every 5 minutes to check if it opened
-                const marketOpen = checkIfMarketOpen();
-                const refreshInterval = marketOpen ? 60000 : 300000; // 1 min or 5 min
-                
-                const interval = setInterval(() => {
-                    fetchStockData();
-                }, refreshInterval);
-                
-                return () => clearInterval(interval);
-            }, []);
-            
-            const formatPrice = (price) => price ? `$${price.toFixed(2)}` : '--';
-            
-            const formatChange = (change, changePercent) => {
-                if (change === null || changePercent === null) return '--';
-                const sign = change >= 0 ? '+' : '';
-                return `${sign}${change.toFixed(2)} (${sign}${changePercent.toFixed(2)}%)`;
-            };
-            
-            const formatVolume = (volume) => {
-                if (!volume) return '--';
-                if (volume >= 1000000) {
-                    return `${(volume / 1000000).toFixed(2)}M`;
-                }
-                return volume.toLocaleString();
-            };
-            
-            if (stockData.loading) {
-                return (
-                    <div style={{ textAlign: 'center', color: 'white' }}>
-                        <div style={{ fontSize: '1.2rem' }}>Loading live stock data...</div>
-                    </div>
-                );
-            }
-            
-            if (stockData.error) {
-                return (
-                    <div style={{ textAlign: 'center', color: '#fbbf24' }}>
-                        <div style={{ fontSize: '1.1rem' }}>{stockData.error}</div>
-                    </div>
-                );
-            }
-            
-            const isPositive = stockData.change >= 0;
-            const changeColor = isPositive ? '#10b981' : '#ef4444';
-            
-            return (
-                <div style={{ color: 'white' }}>
-                    <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                        <div style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '0.5rem' }}>
-                            NASDAQ: FSLR
-                        </div>
-                        <div style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-                            First Solar, Inc.
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                            <div style={{ fontSize: '3rem', fontWeight: 'bold' }}>
-                                {formatPrice(stockData.price)}
-                            </div>
-                            <div style={{ 
-                                fontSize: '1.5rem', 
-                                color: changeColor,
-                                fontWeight: 'bold'
-                            }}>
-                                {formatChange(stockData.change, stockData.changePercent)}
-                            </div>
-                        </div>
-                        <div style={{ 
-                            fontSize: '0.85rem', 
-                            opacity: 0.7, 
-                            marginTop: '0.5rem',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '0.5rem',
-                            flexWrap: 'wrap'
-                        }}>
-                            <span style={{
-                                display: 'inline-block',
-                                width: '8px',
-                                height: '8px',
-                                borderRadius: '50%',
-                                backgroundColor: isMarketOpen ? '#10b981' : '#ef4444',
-                                animation: isMarketOpen ? 'pulse 2s infinite' : 'none'
-                            }}></span>
-                            {isMarketOpen ? 'Market Open - Live Updates' : 'Market Closed - Last Close Price'} • 
-                            Updated: {stockData.lastUpdate ? stockData.lastUpdate.toLocaleTimeString('en-NZ', { hour: '2-digit', minute: '2-digit' }) : '--'}
-                        </div>
-                        {stockData.error && (
-                            <div style={{ 
-                                fontSize: '0.8rem', 
-                                color: '#fbbf24', 
-                                marginTop: '0.5rem',
-                                fontStyle: 'italic'
-                            }}>
-                                {stockData.error}
-                            </div>
-                        )}
-                    </div>
-                    
-                    <div style={{ 
-                        display: 'grid', 
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-                        gap: '1.5rem',
-                        marginTop: '2rem',
-                        padding: '1.5rem',
-                        background: 'rgba(255,255,255,0.1)',
-                        borderRadius: '8px'
-                    }}>
-                        <div>
-                            <div style={{ fontSize: '0.85rem', opacity: 0.7, marginBottom: '0.25rem' }}>
-                                Previous Close
-                            </div>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
-                                {formatPrice(stockData.previousClose)}
-                            </div>
-                        </div>
-                        <div>
-                            <div style={{ fontSize: '0.85rem', opacity: 0.7, marginBottom: '0.25rem' }}>
-                                Day's Open
-                            </div>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
-                                {formatPrice(stockData.open)}
-                            </div>
-                        </div>
-                        <div>
-                            <div style={{ fontSize: '0.85rem', opacity: 0.7, marginBottom: '0.25rem' }}>
-                                Day's High
-                            </div>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
-                                {formatPrice(stockData.high)}
-                            </div>
-                        </div>
-                        <div>
-                            <div style={{ fontSize: '0.85rem', opacity: 0.7, marginBottom: '0.25rem' }}>
-                                Day's Low
-                            </div>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
-                                {formatPrice(stockData.low)}
-                            </div>
-                        </div>
-                        <div>
-                            <div style={{ fontSize: '0.85rem', opacity: 0.7, marginBottom: '0.25rem' }}>
-                                Volume
-                            </div>
-                            <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
-                                {formatVolume(stockData.volume)}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <style>
-                        {`
-                            @keyframes pulse {
-                                0%, 100% { opacity: 1; }
-                                50% { opacity: 0.5; }
-                            }
-                        `}
-                    </style>
-                </div>
-            );
-        }
-        
-        const root = ReactDOM.createRoot(document.getElementById('stock-tracker-root'));
-        root.render(<StockTracker />);
+    <!-- TradingView Widget Script -->
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+        new TradingView.widget({
+            "width": "100%",
+            "height": 400,
+            "symbol": "NASDAQ:FSLR",
+            "interval": "D",
+            "timezone": "Pacific/Auckland",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#0f172a",
+            "enable_publishing": false,
+            "hide_side_toolbar": false,
+            "allow_symbol_change": false,
+            "details": true,
+            "hotlist": false,
+            "calendar": false,
+            "studies": [
+                "Volume@tv-basicstudies"
+            ],
+            "container_id": "tradingview_widget"
+        });
     </script>
 </body>
-</html>
