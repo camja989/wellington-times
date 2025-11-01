@@ -1,12 +1,11 @@
 # Netlify Configuration File
-# This redirects all traffic to the primary domain
 
-# Redirect from old domain to new domain
-[[redirects]]
-    from = "/*"
-    to = "https://wellingtontimes.co.nz/:splat"
-    status = 301
-    force = true
+# Redirect www to non-www (only when domain is set up)
+# [[redirects]]
+#     from = "https://www.wellingtontimes.co.nz/*"
+#     to = "https://wellingtontimes.co.nz/:splat"
+#     status = 301
+#     force = true
 
 # Build settings
 [build]
