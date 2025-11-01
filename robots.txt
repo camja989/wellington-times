@@ -1,0 +1,16 @@
+# robots.txt for The Wellington Times (wgtnews.live)
+# Optimized for New Zealand search engines
+
+User-agent: *
+Allow: /
+
+# Prioritize important pages
+Allow: /index.html
+Allow: /articles/
+Allow: /pages/
+
+# Don't index duplicate or low-value pages
+Disallow: /pages/legal/
+
+# Sitemap location
+Sitemap: https://wgtnews.live/sitemap.xml

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    
+    <!-- Homepage - Highest Priority -->
+    <url>
+        <loc>https://wgtnews.live/</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/index.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Main Section Pages -->
+    <url>
+        <loc>https://wgtnews.live/pages/politics.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/pages/business.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/pages/technology.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/pages/sports.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/pages/culture.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/pages/opinion.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Recent Articles -->
+    <url>
+        <loc>https://wgtnews.live/articles/medical-student-grant-crisis.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/labour-capital-gains-tax-wellington.html</loc>
+        <lastmod>2025-10-29</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/beyond-meat-meme-stock-surge.html</loc>
+        <lastmod>2025-10-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/ai-agents-digital-workforce.html</loc>
+        <lastmod>2025-10-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/wellington-phoenix-perth-glory-draw.html</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/psychopathic-traits-careers-nz.html</loc>
+        <lastmod>2025-10-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/free-tertiary-education-opinion.html</loc>
+        <lastmod>2025-10-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/nz-nuclear-power-opinion.html</loc>
+        <lastmod>2025-10-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/trump-russia-oil-sanctions.html</loc>
+        <lastmod>2025-10-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/luxon-economy-reality-check.html</loc>
+        <lastmod>2025-10-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/articles/workers-strike-100000-strong.html</loc>
+        <lastmod>2025-10-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- About Pages -->
+    <url>
+        <loc>https://wgtnews.live/pages/about/our-story.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/pages/about/mission-values.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://wgtnews.live/pages/contact/contact-us.html</loc>
+        <lastmod>2025-11-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+</urlset>
