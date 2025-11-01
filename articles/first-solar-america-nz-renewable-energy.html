@@ -289,6 +289,22 @@
             
             const [isMarketOpen, setIsMarketOpen] = useState(true);
             
+            const checkIfMarketOpen = () => {
+                // Convert to US Eastern Time for NASDAQ market hours
+                const now = new Date();
+                const utcHours = now.getUTCHours();
+                const utcDay = now.getUTCDay();
+                
+                // NASDAQ hours: 9:30 AM - 4:00 PM ET
+                // ET is UTC-5 (or UTC-4 during daylight saving)
+                // Market hours in UTC: approximately 14:30 - 21:00 (standard time) or 13:30 - 20:00 (daylight time)
+                // Simplified: check if weekday and roughly within market hours
+                const isWeekday = utcDay >= 1 && utcDay <= 5;
+                const isDuringMarketHours = (utcHours >= 13 && utcHours < 21);
+                
+                return isWeekday && isDuringMarketHours;
+            };
+            
             const fetchStockData = async () => {
                 try {
                     const symbol = 'FSLR';
@@ -302,48 +318,68 @@
                     const quote = data.chart.result[0];
                     const meta = quote.meta;
                     
-                    const timestamps = quote.timestamp;
-                    const prices = quote.indicators.quote[0];
-                    const latestIndex = timestamps.length - 1;
+                    const marketOpen = checkIfMarketOpen();
+                    setIsMarketOpen(marketOpen);
                     
-                    const currentPrice = prices.close[latestIndex] || meta.regularMarketPrice;
-                    const previousClose = meta.chartPreviousClose;
+                    // Use regularMarketPrice for current/last price
+                    const currentPrice = meta.regularMarketPrice;
+                    const previousClose = meta.chartPreviousClose || meta.previousClose;
+                    
+                    // If market is closed, show the change from previous close
                     const change = currentPrice - previousClose;
                     const changePercent = (change / previousClose) * 100;
+                    
+                    // Get today's high/low or use previous session data
+                    const high = meta.regularMarketDayHigh || previousClose;
+                    const low = meta.regularMarketDayLow || previousClose;
+                    
+                    // For volume, try to get from meta or calculate from prices array
+                    const timestamps = quote.timestamp || [];
+                    const prices = quote.indicators.quote[0];
+                    let totalVolume = meta.regularMarketVolume || 0;
+                    
+                    // If we have intraday data, sum it up
+                    if (prices && prices.volume && prices.volume.length > 0) {
+                        totalVolume = prices.volume.reduce((a, b) => a + (b || 0), 0);
+                    }
                     
                     setStockData({
                         price: currentPrice,
                         change: change,
                         changePercent: changePercent,
-                        high: meta.regularMarketDayHigh,
-                        low: meta.regularMarketDayLow,
-                        open: prices.open[0],
+                        high: high,
+                        low: low,
+                        open: meta.regularMarketOpen || previousClose,
                         previousClose: previousClose,
-                        volume: prices.volume.reduce((a, b) => a + (b || 0), 0),
+                        volume: totalVolume,
                         lastUpdate: new Date(),
                         loading: false,
                         error: null
                     });
-                    
-                    const now = new Date();
-                    const dayOfWeek = now.getDay();
-                    const hour = now.getHours();
-                    
-                    setIsMarketOpen(dayOfWeek >= 1 && dayOfWeek <= 5 && hour >= 9 && hour < 16);
                     
                 } catch (error) {
                     console.error('Error fetching stock data:', error);
                     setStockData(prev => ({
                         ...prev,
                         loading: false,
-                        error: 'Unable to load real-time data. Please refresh the page.'
+                        error: 'Unable to load stock data. Please refresh the page.'
                     }));
                 }
             };
             
             useEffect(() => {
+                // Fetch immediately
                 fetchStockData();
-                const interval = setInterval(fetchStockData, 60000);
+                
+                // If market is open, update every 60 seconds
+                // If market is closed, update every 5 minutes to check if it opened
+                const marketOpen = checkIfMarketOpen();
+                const refreshInterval = marketOpen ? 60000 : 300000; // 1 min or 5 min
+                
+                const interval = setInterval(() => {
+                    fetchStockData();
+                }, refreshInterval);
+                
                 return () => clearInterval(interval);
             }, []);
             
@@ -410,7 +446,8 @@
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            gap: '0.5rem'
+                            gap: '0.5rem',
+                            flexWrap: 'wrap'
                         }}>
                             <span style={{
                                 display: 'inline-block',
@@ -420,8 +457,8 @@
                                 backgroundColor: isMarketOpen ? '#10b981' : '#ef4444',
                                 animation: isMarketOpen ? 'pulse 2s infinite' : 'none'
                             }}></span>
-                            {isMarketOpen ? 'Market Open' : 'Market Closed'} • 
-                            Last updated: {stockData.lastUpdate ? stockData.lastUpdate.toLocaleTimeString('en-NZ') : '--'}
+                            {isMarketOpen ? 'Market Open - Live Updates' : 'Market Closed - Last Close Price'} • 
+                            Updated: {stockData.lastUpdate ? stockData.lastUpdate.toLocaleTimeString('en-NZ', { hour: '2-digit', minute: '2-digit' }) : '--'}
                         </div>
                     </div>
                     
