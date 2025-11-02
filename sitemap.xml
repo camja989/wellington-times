@@ -5,14 +5,14 @@
     <!-- Homepage - Highest Priority -->
     <url>
         <loc>https://wellingtontimes.co.nz/</loc>
-        <lastmod>2025-11-01</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <url>
         <loc>https://wellingtontimes.co.nz/index.html</loc>
-        <lastmod>2025-11-01</lastmod>
+        <lastmod>2025-11-02</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>

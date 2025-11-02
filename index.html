@@ -51,9 +51,30 @@
     <link rel="icon" type="image/png" href="img/flavicon.png">
     <link rel="apple-touch-icon" href="img/flavicon.png">
     
+    <!-- Preconnect to improve loading speed -->
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#c8102e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="news_keywords" content="Wellington, New Zealand, Karori, local news, breaking news, politics, business">
+    
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4169973866080216"
      crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics (Add your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
     
     <!-- Structured Data - Organization -->
     <script type="application/ld+json">
@@ -149,6 +170,35 @@
     }
     </script>
     
+    <!-- Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://wellingtontimes.co.nz/"
+      }]
+    }
+    </script>
+    
+    <!-- Structured Data - CollectionPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Wellington Times - Latest News",
+      "description": "Latest news from Wellington and New Zealand",
+      "url": "https://wellingtontimes.co.nz/",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": []
+      }
+    }
+    </script>
+    
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -197,6 +247,8 @@
         <div class="main-content">
             <!-- Main Column -->
             <div class="main-column">
+                <h2 style="font-size: 18px; margin-bottom: 20px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Latest Wellington & New Zealand News</h2>
+                
                 <!-- Featured Article -->
                 <article class="featured-article">
                     <div class="featured-image">
@@ -465,16 +517,27 @@
                         <li><a href="https://www.facebook.com/profile.php?id=61564332604093" target="_blank" rel="noopener noreferrer">📘 Facebook</a></li>
                     </ul>
                 </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p style="font-size: 14px; line-height: 1.8;">
+                        <strong>Wellington Times</strong><br>
+                        Karori, Wellington<br>
+                        New Zealand<br>
+                        Email: <a href="mailto:news@wellingtontimes.co.nz" style="color: inherit;">news@wellingtontimes.co.nz</a><br>
+                        Tips: <a href="mailto:tips@wellingtontimes.co.nz" style="color: inherit;">tips@wellingtontimes.co.nz</a>
+                    </p>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 The Wellington Times (wellingtontimes.co.nz) - Wellington, New Zealand's Independent Digital Newspaper. All rights reserved.</p>
+                <p>&copy; 2025 Wellington Times - Wellington, New Zealand's Independent Digital Newspaper | Local News from Karori, Wellington & Across New Zealand</p>
                 <p style="margin-top: 10px; font-size: 13px;">
                     <a href="pages/legal/privacy-policy.html" style="color: inherit;">Privacy Policy</a> | 
                     <a href="pages/legal/terms-of-service.html" style="color: inherit;">Terms of Service</a> | 
-                    <a href="sitemap.xml" style="color: inherit;">Sitemap</a>
+                    <a href="sitemap.xml" style="color: inherit;">Sitemap</a> |
+                    <a href="robots.txt" style="color: inherit;">Robots.txt</a>
                 </p>
                 <p style="margin-top: 10px; font-size: 12px; color: #999;">
-                    Wellington Times, Wellington News, NZ News, New Zealand Journalism | wellingtontimes.co.nz
+                    Keywords: Wellington Times, Wellington News, News NZ, Karori News, New Zealand News, Wellington Journalism, Local Wellington News | wellingtontimes.co.nz
                 </p>
             </div>
         </div>
