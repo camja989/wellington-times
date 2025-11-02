@@ -1,16 +1,36 @@
-# robots.txt for The Wellington Times (wellingtontimes.co.nz)
-# Optimized for New Zealand search engines
+# robots.txt for Wellington Times - wellingtontimes.co.nz
+# News NZ - Wellington New Zealand News - Wellington Times
 
 User-agent: *
 Allow: /
-
-# Prioritize important pages
-Allow: /index.html
 Allow: /articles/
 Allow: /pages/
+Allow: /games/
+Allow: /img/
+Allow: /css/
 
-# Don't index duplicate or low-value pages
+# Disallow low-value pages
 Disallow: /pages/legal/
+Disallow: /admin/
+
+# Crawl-delay for news freshness
+Crawl-delay: 1
 
 # Sitemap location
 Sitemap: https://wellingtontimes.co.nz/sitemap.xml
+
+# Google News Bot - News NZ
+User-agent: Googlebot-News
+Allow: /
+Allow: /articles/
+Crawl-delay: 0
+
+# Google Search Bot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing Search Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
