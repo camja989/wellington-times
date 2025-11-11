@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Search functionality
 const articles = [
+    { title: "Wellington Medical Students Launch KiwiMed: The Question Bank Set to Revolutionize Kiwi Medical Education", url: "articles/kiwimed-medical-students-question-bank.html", category: "Business", description: "Three final-year Wellington medical students launch KiwiMed.co.nz, New Zealand's first locally-focused medical exam question bank platform" },
     { title: "Choppalawnz: Wellington's Premier Lawn Care Service", url: "articles/choppalawnz-wellington-lawn-care.html", category: "Business", description: "Local business brings professional lawn care and eco-friendly practices to Wellington homes and businesses" },
     { title: "Labour's Capital Gains Tax: Winners and Losers Among Wellington's Middle Class", url: "articles/labour-capital-gains-tax-wellington.html", category: "Politics", description: "Labour Party announces targeted capital gains tax on investment properties" },
     { title: "Pacific Flashpoint: How a Narrow Waterway Could Determine Asia-Pacific Future", url: "articles/pacific-bashi-channel-taiwan-crisis.html", category: "Politics", description: "The Bashi Channel has become a focal point of US-China military competition" },
