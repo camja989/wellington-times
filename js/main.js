@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // Search functionality
 const articles = [
     { title: "Choppalawnz: Wellington's Premier Lawn Care Service", url: "articles/choppalawnz-wellington-lawn-care.html", category: "Business", description: "Local business brings professional lawn care and eco-friendly practices to Wellington homes and businesses" },
-    { title: "Boss Bagels Paraparaumu: A Greasy, Delicious Slice of Americana on the Kāpiti Coast", url: "articles/boss-bagels-paraparaumu-review.html", category: "Reviews", description: "Drive-through bagel shop serving hearty American-style fare with stunning Kāpiti Island views. Boss Stacker earns 10/10, overall rating 9.5/10" },
     { title: "Labour's Capital Gains Tax: Winners and Losers Among Wellington's Middle Class", url: "articles/labour-capital-gains-tax-wellington.html", category: "Politics", description: "Labour Party announces targeted capital gains tax on investment properties" },
     { title: "Pacific Flashpoint: How a Narrow Waterway Could Determine Asia-Pacific Future", url: "articles/pacific-bashi-channel-taiwan-crisis.html", category: "Politics", description: "The Bashi Channel has become a focal point of US-China military competition" },
     { title: "First Solar: America's Solar Giant Shines Bright Amid NZ's Renewable Revolution", url: "articles/first-solar-america-nz-renewable-energy.html", category: "Business", description: "First Solar's stellar Q3 results and NZ solar capacity surge" },
@@ -163,7 +162,6 @@ function performSearch() {
             'Sports': '#4caf50',
             'Culture': '#9c27b0',
             'Opinion': '#ff9800',
-            'Reviews': '#ff6b6b',
             'World': '#d32f2f'
         };
         
