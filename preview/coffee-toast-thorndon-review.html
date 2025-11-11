@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>PREVIEW: Coffee & Toast Thorndon Review - The Wellington Times</title>
+    <link rel="icon" type="image/png" href="../img/flavicon.png">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .preview-banner {
+            background: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .article-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .article-header {
+            margin-bottom: 30px;
+        }
+        .article-category {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .article-title {
+            font-size: 42px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        .article-subtitle {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            padding: 15px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+        }
+        .featured-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .article-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        .article-content h2 {
+            font-size: 28px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        .article-content h3 {
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        .article-content strong {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .photo-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .photo-gallery img:hover {
+            transform: scale(1.05);
+        }
+        .rating-box {
+            background: #f8f9fa;
+            border-left: 4px solid #ff6b6b;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .rating-box h3 {
+            margin-top: 0;
+            color: #ff6b6b;
+        }
+        .stars {
+            color: #ffd700;
+            font-size: 24px;
+        }
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .info-box strong {
+            color: #1976D2;
+        }
+        .highlights-box {
+            background: #f1f8e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+        .highlights-box ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        .highlights-box li {
+            margin: 8px 0;
+        }
+        @media (max-width: 768px) {
+            .article-container {
+                padding: 20px;
+                margin: 20px 10px;
+            }
+            .article-title {
+                font-size: 28px;
+            }
+            .article-subtitle {
+                font-size: 16px;
+            }
+            .article-content {
+                font-size: 16px;
+            }
+            .article-content h2 {
+                font-size: 22px;
+            }
+            .photo-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-banner">
+        🔒 PREVIEW MODE - This article is not yet published and is only accessible via this direct link
+    </div>
+
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="date" id="currentDate"></div>
+                <div class="weather"><span>☁</span><span id="weather">Wellington: 16°C, Partly Cloudy</span></div>
+            </div>
+        </div>
+        <div class="logo-section">
+            <a href="../index.html" class="logo">The Wellington Times</a>
+            <div class="tagline">Truth • Integrity • Community • Since 2025</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="article-container">
+            <div class="article-header">
+                <span class="article-category">FOOD REVIEW</span>
+                <h1 class="article-title">Coffee & Toast: Thorndon's Charming New Addition Delivers Style and Substance</h1>
+                <p class="article-subtitle">A fresh face on Tinakori Road brings Instagram-worthy interiors and hearty comfort food to Wellington's café scene</p>
+                <div class="article-meta">
+                    <div class="meta-item">
+                        <span>📅</span>
+                        <span>11 November 2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>⏱️</span>
+                        <span>6 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>✍️</span>
+                        <span>Jack Campbell</span>
+                    </div>
+                </div>
+            </div>
+
+            <img src="../img/coffee&toast_imgs/IMG_6118.webp" alt="Coffee & Toast exterior on Tinakori Road" class="featured-image">
+
+            <div class="article-content">
+                <p>Thorndon has welcomed a delightful new addition to its café landscape, and Coffee & Toast is already turning heads with its picture-perfect interiors and substantial menu offerings.</p>
+
+                <h2>First Impressions</h2>
+
+                <p>Nestled on Tinakori Road, Coffee & Toast immediately catches the eye with its bright white exterior and inviting window displays dotted with potted plants. But step inside, and you're greeted with something special: a thoughtfully designed space that balances vintage charm with contemporary café culture.</p>
+
+                <div class="photo-gallery">
+                    <img src="../img/coffee&toast_imgs/IMG_6119.webp" alt="Coffee & Toast interior design">
+                    <img src="../img/coffee&toast_imgs/IMG_6120.webp" alt="Coffee & Toast ceiling and lighting">
+                    <img src="../img/coffee&toast_imgs/IMG_6121.webp" alt="Coffee & Toast dining area">
+                </div>
+
+                <p>The standout feature? A striking ceiling installation of alternating black and white panels in a dice pattern, complemented by elegant pendant lighting that creates an unexpectedly sophisticated atmosphere. Add to that a working fireplace with white-painted brick surround, and you've got a space that feels both cozy and carefully curated.</p>
+
+                <h2>The Food</h2>
+
+                <p>Coffee & Toast doesn't skimp on portion sizes or quality. During our visit, we sampled their fried chicken burger ($17.99) and what appeared to be a beef burger with similar pricing. Both arrived on sleek black plates with generous servings of golden fries.</p>
+
+                <div class="photo-gallery">
+                    <img src="../img/coffee&toast_imgs/IMG_6122.webp" alt="Fried chicken burger with fries">
+                    <img src="../img/coffee&toast_imgs/IMG_6123.webp" alt="Burger and fries close-up">
+                    <img src="../img/coffee&toast_imgs/IMG_6124.webp" alt="Turkish bread sandwich">
+                </div>
+
+                <p>The fried chicken burger deserves particular mention: a substantial serving of crispy fried chicken topped with gochujang BBQ sauce and Korean pickled cucumbers, all nestled in a toasted brioche bun with kimchi mayo slaw. It's messy, it's indulgent, and it's thoroughly satisfying.</p>
+
+                <p>The Turkish bread sandwich showcased equally impressive attention to detail, featuring quality ham, melted cheese, and fresh greens on seeded Turkish bread. At the upper end of Wellington's café pricing, these dishes justify their cost with quality ingredients and careful preparation.</p>
+
+                <div class="photo-gallery">
+                    <img src="../img/coffee&toast_imgs/IMG_6125.webp" alt="Menu board">
+                    <img src="../img/coffee&toast_imgs/IMG_6126.webp" alt="Coffee and menu">
+                    <img src="../img/coffee&toast_imgs/IMG_6127.webp" alt="Drinks menu">
+                </div>
+
+                <h2>The All-Day Menu</h2>
+
+                <p>Coffee & Toast's menu caters to various dietary requirements, with clear marking for vegetarian (V), vegan (VG), gluten-free (GF), and dairy-free (DF) options. Breakfast items range from the healthy (Toasted Granola at $16.99) to the decadent (Big Breakfast at $26.99), while lunch offerings include interesting options like Sumac Spiced Calamari Salad ($22.99) and Beer Battered Fish 'n' Chips ($25.99).</p>
+
+                <p>The café also offers a fried chicken waffle ($23.99) that combines sweet and savory in a way that's becoming increasingly popular in Wellington's brunch scene.</p>
+
+                <h2>Coffee and Drinks</h2>
+
+                <div class="photo-gallery">
+                    <img src="../img/coffee&toast_imgs/IMG_6128.webp" alt="Coffee service">
+                    <img src="../img/coffee&toast_imgs/IMG_6129.webp" alt="Cabinet food display">
+                    <img src="../img/coffee&toast_imgs/IMG_6130.webp" alt="Interior atmosphere">
+                </div>
+
+                <p>The drinks menu is comprehensive without being overwhelming. Coffee prices sit at the standard Wellington range ($4.50 for basics, $5.50 for specialty drinks), with alternative milk options available. The cabinet displayed fresh baked goods including blueberry muffins, cheese scones, and brownies—all appearing house-made.</p>
+
+                <div class="photo-gallery">
+                    <img src="../img/coffee&toast_imgs/IMG_6131.webp" alt="Fireplace and seating area">
+                    <img src="../img/coffee&toast_imgs/IMG_6132.webp" alt="Overall cafe ambiance">
+                </div>
+
+                <h2>The Verdict</h2>
+
+                <p>Coffee & Toast brings something Thorndon has been quietly waiting for: a café that doesn't compromise on atmosphere, food quality, or attention to detail. Yes, it sits at the upper end of Wellington's café pricing, but the generous portions, quality ingredients, and genuinely pleasant environment make it worthwhile.</p>
+
+                <p>The space strikes an interesting balance—polished enough for a business lunch, yet relaxed enough for a casual weekend brunch. The addition of EFTPOS availability (prominently noted on their counter signage) and wheelchair-accessible facilities shows thoughtfulness beyond just aesthetics.</p>
+
+                <div class="rating-box">
+                    <h3>Overall Rating</h3>
+                    <div style="text-align: center; font-size: 48px; margin: 20px 0;">
+                        <span class="stars">★★★★☆</span>
+                    </div>
+                    <p style="text-align: center; font-size: 24px; font-weight: bold; color: #ff6b6b; margin: 0;">4/5 Stars</p>
+                </div>
+
+                <div class="highlights-box">
+                    <h3 style="color: #2e7d32; margin-top: 0;">Quick Facts</h3>
+                    <ul>
+                        <li><strong>Best for:</strong> Weekend brunch, casual lunch meetings, Instagram opportunities</li>
+                        <li><strong>Price range:</strong> $$-$$$ (Mains $17-$27)</li>
+                        <li><strong>Dietary options:</strong> Excellent (V, VG, GF, DF clearly marked)</li>
+                        <li><strong>Atmosphere:</strong> Cozy, stylish, photogenic</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Coffee & Toast</strong><br>
+                    Tinakori Road, Thorndon, Wellington<br>
+                    Opening hours: [To be confirmed]<br>
+                    Website: [To be confirmed]</p>
+                </div>
+
+                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; margin: 30px 0; border-radius: 4px;">
+                    <p style="margin: 0;"><strong>📝 Note to Editor:</strong> This is a preview version. Please review photos, confirm opening hours and website details before publication. Additional information needed: exact address number on Tinakori Road, official opening hours, website/social media links if available.</p>
+                </div>
+
+                <div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd;">
+                    <p style="font-style: italic; color: #666;">Have you visited Coffee & Toast? Share your experience with The Wellington Times at news@wellingtontimes.co.nz</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section"><h3>About Us</h3><ul><li><a href="../pages/about/our-story.html">About Us</a></li><li><a href="../pages/about/mission-values.html">Mission & Values</a></li><li><a href="../pages/about/editorial-team.html">Editorial Team</a></li><li><a href="../pages/about/careers.html">Careers</a></li></ul></div>
+                <div class="footer-section"><h3>Sections</h3><ul><li><a href="../pages/politics.html">Politics</a></li><li><a href="../pages/business.html">Business</a></li><li><a href="../pages/technology.html">Technology</a></li><li><a href="../pages/sports.html">Sports</a></li><li><a href="../pages/culture.html">Culture</a></li><li><a href="../pages/reviews.html">Reviews</a></li></ul></div>
+                <div class="footer-section"><h3>Services</h3><ul><li><a href="../pages/services/subscribe.html">Subscribe</a></li><li><a href="../pages/services/newsletters.html">Newsletters</a></li><li><a href="../pages/services/mobile-app.html">Mobile App</a></li><li><a href="../pages/services/rss-feeds.html">RSS Feeds</a></li></ul></div>
+                <div class="footer-section"><h3>Contact</h3><ul><li><a href="../pages/contact/contact-us.html">Contact Us</a></li><li><a href="../pages/contact/advertise.html">Advertise</a></li><li><a href="../pages/contact/news-tips.html">Send News Tips</a></li><li><a href="../pages/contact/letters.html">Letters to Editor</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 The Wellington Times. All rights reserved. | <a href="../pages/legal/privacy-policy.html" style="color: inherit;">Privacy Policy</a> | <a href="../pages/legal/terms-of-service.html" style="color: inherit;">Terms of Service</a></p></div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
